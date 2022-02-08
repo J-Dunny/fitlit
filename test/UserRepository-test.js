@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import UserRepository from "../src/UserRepository";
 import userData from "../src/data/users"
-
+import User from '../src/user';
 let userRepo = new UserRepository(userData);
 // let users = userData.map(user => new User(user.id,
 //   user.name, user.address, user.email, user.strideLength,
@@ -12,9 +12,8 @@ describe("User Repository", () => {
     expect(UserRepository).to.be.a("function");
   });
 
-  it("should store all user objects", function () {
-    //userRepo.createUsers()
-    expect(userRepo.userData).to.deep.equal(userData);
+  it("should store user objects", function () {
+    expect(userRepo.userData[0]).to.be.an.instanceof(User);
   });
 
   it("should display user data", function () {

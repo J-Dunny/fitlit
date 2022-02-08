@@ -1,36 +1,22 @@
-import userData from "./data/users"
-
-
+import User from "../src/user";
 class UserRepository {
-  //hold onto all user objects
-  //parameter to pass user Data
-
   constructor(userData) {
-    this.userData = userData;
-    //this.users = []
+    this.userData = userData.map((user) => new User(user));
   }
 
-  //createUsers() {
-  // this.users = userData.map(user => new User(user.id,
-  //     user.name, user.address, user.email, user.strideLength,
-  //     user.dailyStepGoal, user.friends))
-  // }
-  //2 methods
-  //what is user data passing in // ID
-
   displayUserData(userID) {
-    //  const users = this.userData
-    // let userInfo = users.find(user => user.id === userID )
-     //console.log(userData)
-
-    let userInfo = this.userData.find(user => user.id === userID);
+    let userInfo = this.userData.find((user) => user.id === userID);
     return userInfo;
   }
 
-  //average step goal among all users
-  calculateAvgStepGoal() {}
+  calculateAvgStepGoal() {
+    let stepGoals = this.userData.map((stepGoal) => stepGoal.dailyStepGoal);
+
+    let addGoals = stepGoals.reduce(
+      (previousValue, currentValue) => previousValue + currentValue
+    );
+    return addGoals / this.userData.length;
+  }
 }
 
 export default UserRepository;
-
-//let cards = prototypeQuestions.map(card => new Card(card.id, card.question, card.answers, card.correctAnswer))
