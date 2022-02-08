@@ -1,19 +1,22 @@
+import User from "../src/user";
 class UserRepository {
-  //hold onto all user objects
-  //parameter to pass user Data
-  constructor(users) {
-    this.users = users;
+  constructor(userData) {
+    this.userData = userData.map((user) => new User(user));
   }
-  //2 methods
-  //what is user data passing in // ID
+
   displayUserData(userID) {
-
+    let userInfo = this.userData.find((user) => user.id === userID);
+    return userInfo;
   }
 
-  //average step goal among all users
   calculateAvgStepGoal() {
+    let stepGoals = this.userData.map((stepGoal) => stepGoal.dailyStepGoal);
 
+    let addGoals = stepGoals.reduce(
+      (previousValue, currentValue) => previousValue + currentValue
+    );
+    return addGoals / this.userData.length;
   }
- }
+}
 
 export default UserRepository;
