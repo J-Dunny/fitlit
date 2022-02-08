@@ -6,8 +6,11 @@ import userData from './data/users';
 import UserRepository from './UserRepository';
 
 console.log(userData,"<>>>>userData")
-const userRepo = new UserRepository(userData[0]);
+const userRepo = new UserRepository(userData);
 console.log(userRepo)
+
+const firstUser = userRepo.userData[0]
+console.log(firstUser)
 // An example of how you tell webpack to use a CSS file
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
