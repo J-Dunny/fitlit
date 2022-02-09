@@ -4,7 +4,7 @@ import './images/turing-logo.png';
 // const users = new Users();
 // fetch('https://fitlit-api.herokuapp.com/api/v1/users').then(responses => responses.json()).then(data => data.userData);
 const users = Promise.resolve(fetch('https://fitlit-api.herokuapp.com/api/v1/users').then(responses => responses.json()).then(data => data.userData));
-console.log(users)
+console.log(usersq1)
 import UserRepository from './UserRepository';
 
 const userName = document.getElementById("userName");
