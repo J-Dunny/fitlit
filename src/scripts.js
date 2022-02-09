@@ -7,7 +7,7 @@ import UserRepository from './UserRepository';
 
 const userName = document.getElementById("userName");
 const stepGoal = document.getElementById("stepGoal");
-const avgStepGoal = document.getElementById("avgStepGoal")
+const avgStepGoal = document.getElementById("avgStepGoal");
 
 console.log(userData,"<>>>>userData")
 const userRepo = new UserRepository(userData);
@@ -15,6 +15,12 @@ console.log(userRepo)
 
 const firstUser = userRepo.userData[0]
 console.log(firstUser)
+
+userName.innerText = `Welcome ${firstUser.firstName()}`;
+
+stepGoal.innerText = `Step Goal: ${firstUser.dailyStepGoal}`;
+
+avgStepGoal.innerText = `Average Step Goal: ${userRepo.calculateAvgStepGoal()}`;
 // An example of how you tell webpack to use a CSS file
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
