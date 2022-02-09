@@ -5,6 +5,10 @@ import './images/turing-logo.png'
 import userData from './data/users';
 import UserRepository from './UserRepository';
 
+const userName = document.getElementById("userName");
+const stepGoal = document.getElementById("stepGoal");
+const avgStepGoal = document.getElementById("avgStepGoal")
+
 console.log(userData,"<>>>>userData")
 const userRepo = new UserRepository(userData);
 console.log(userRepo)
