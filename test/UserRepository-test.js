@@ -13,11 +13,11 @@ describe("User Repository", () => {
   });
 
   it("should store user objects", function () {
-    expect(userRepo.userData[0]).to.be.an.instanceof(User);
+    expect(userRepo.userInfo[0]).to.be.an.instanceof(User);
   });
 
   it("should display user data", function () {
-    expect(userRepo.displayUserData(1)).to.deep.equal(userRepo.userData[0]);
+    expect(userRepo.displayUserData(1)).to.deep.equal(userRepo.userInfo[0]);
   });
 
   it("should calculate the average step goal", function () {
