@@ -2,6 +2,9 @@ body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .top-section {
@@ -10,9 +13,31 @@ flex-direction: row;
 }
 
 .daily-step-goal {
-  border: solid black 1px;
-  width: 40vh;
+  width: 40vw;
   height: 40vh;
+  
+}
+
+.friends {
+  width: 20vw;
+}
+
+.sleep {
+  width: 25vw;
+}
+
+.hydration {
+  width: 86vw;
+  height: 15vh;
+}
+
+.boxes {
+  margin: 2px;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border: solid black 1px;
 }
