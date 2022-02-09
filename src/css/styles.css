@@ -3,3 +3,16 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
 }
+
+.top-section {
+display: flex;
+flex-direction: row;
+}
+
+.daily-step-goal {
+  border: solid black 1px;
+  width: 40vh;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+}
