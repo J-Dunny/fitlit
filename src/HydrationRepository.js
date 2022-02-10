@@ -1,17 +1,17 @@
-import hydration from './apiCalls'
 class HydrationRepository {
   constructor(hydrationInfo) {
-    this.hydrationData = hydrationInfo
+    this.hydrationData = hydrationInfo;
   }
   avgPerDayOz(userId) {
+    //using math.round()
+    //nearest whole number
+  }
+
+  specificDayOz(userId, date) {
 
   }
 
-  specificDayOz(userId) {
-
-  }
-
-  eachDayWeek0z(userId) {
+  eachDayWeek0z(userId, startDate, endDate) {
 
   }
 
