@@ -11,9 +11,9 @@ class User {
     this.strideLength = userObject.strideLength;
     this.dailyStepGoal = userObject.dailyStepGoal;
     this.friends = userObject.friends;
-    this.hydration = {hydrationData}
+    // this.hydration = {hydrationData}
       }
-  
+
 
   firstName() {
     let fullName = this.name

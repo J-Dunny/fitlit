@@ -1,7 +1,7 @@
-import hydration
+import hydration from './apiCalls'
 class HydrationRepository {
-  constructor() {
-    this.hydrationData = hydration
+  constructor(hydrationInfo) {
+    this.hydrationData = hydrationInfo
   }
   avgPerDayOz(userId) {
 
