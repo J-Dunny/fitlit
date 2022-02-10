@@ -1,5 +1,4 @@
-// Your fetch requests will live here!
+const users = fetch('https://fitlit-api.herokuapp.com/api/v1/users').then(responses => responses.json())
 
 
-console.log('I will be a fetch request!')
-
+export default users
