@@ -1,6 +1,6 @@
 import './css/styles.css';
 import './images/turing-logo.png';
-import users from './apiCalls.js'
+import {users, hydration, activity, sleep} from './apiCalls.js'
 import UserRepository from './UserRepository';
 
 const userName = document.getElementById("userName");
@@ -9,7 +9,7 @@ const avgStepGoal = document.getElementById("avgStepGoal");
 
 let userRepo;
 
-Promise.all([users]).then(data => {
+Promise.all([users, hydration]).then(data => {
     userRepo = new UserRepository(data[0].userData)
     displayUserStepGoals(3);
 
@@ -24,5 +24,3 @@ function displayUserStepGoals(userId){
 
     avgStepGoal.innerText = `Average Step Goal: ${userRepo.calculateAvgStepGoal()}`;
 }
-
-
