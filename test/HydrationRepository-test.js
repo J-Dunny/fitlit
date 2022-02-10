@@ -30,7 +30,7 @@ describe('Hydration Repository', () => {
     expect(hydroRepo.avgPerDayOz(1)).to.equal(62);
   });
 
-  it.skip('should have a method that returns how many fluid ounces have been consumed for a specific day', function () {
+  it('should have a method that returns how many fluid ounces have been consumed for a specific day', function () {
     expect(hydroRepo.specificDayOz(1, "2019/06/15")).to.equal(37);
   });
 

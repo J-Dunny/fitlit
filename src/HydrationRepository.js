@@ -9,7 +9,12 @@ class HydrationRepository {
   }
 
   specificDayOz(userId, date) {
-
+    const findDate = this.hydrationData.find(user => {
+      if (user.date === date && user.userID === userId) {
+        return user.numOunces;
+      }});
+      
+    return findDate.numOunces;
   }
 
   eachDayWeek0z(userId, startDate, endDate) {
