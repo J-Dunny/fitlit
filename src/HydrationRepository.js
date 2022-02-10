@@ -13,12 +13,20 @@ class HydrationRepository {
       if (user.date === date && user.userID === userId) {
         return user.numOunces;
       }});
-      
+
     return findDate.numOunces;
   }
 
-  eachDayWeek0z(userId, startDate, endDate) {
+  eachDayWeek0z(userId, startDate) {
+    const findUser = this.hydrationData.filter(id => id.userID === userId);
 
+    const x;
+
+    for(var i = 0; i < 7, i++) {
+      x = findUser.indexOf(findUser[i].date === startDate);
+      return x
+    }
+    console.log(x)
   }
 
 }

@@ -34,7 +34,8 @@ describe('Hydration Repository', () => {
     expect(hydroRepo.specificDayOz(1, "2019/06/15")).to.equal(37);
   });
 
-  it.skip('method that returns ounces consumed each day for 7 days', function () {
-    expect(hydroRepo.specificDayOz(1, "2019/06/15", "2019/06/21")).to.equal([37, 69, 96, 61, 91, 50, 50]);
+  it('method that returns ounces consumed each day for 7 days', function () {
+    //"2019/06/21"
+    expect(hydroRepo.eachDayWeek0z(1, "2019/06/15")).to.equal([37, 69, 96, 61, 91, 50, 50]);
   });
 })
