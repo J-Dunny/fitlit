@@ -26,8 +26,8 @@ describe('Hydration Repository', () => {
     expect(hydroRepo).to.be.an.instanceOf(HydrationRepository);
   });
 
-  it.skip('should have a method that returns avg fluid ounces consumed per day for all time', function () {
-    expect(hydroRepo.avgPerDayOz(1)).to.equal(62.125);
+  it('should have a method that returns avg fluid ounces consumed per day for all time', function () {
+    expect(hydroRepo.avgPerDayOz(1)).to.equal(62);
   });
 
   it.skip('should have a method that returns how many fluid ounces have been consumed for a specific day', function () {
