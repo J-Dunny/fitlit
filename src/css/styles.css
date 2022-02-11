@@ -15,7 +15,7 @@ flex-direction: row;
 .daily-step-goal {
   width: 40vw;
   height: 40vh;
-  
+
 }
 
 .friends {
@@ -28,7 +28,7 @@ flex-direction: row;
 
 .hydration {
   width: 86vw;
-  height: 15vh;
+  height: 50vh;
 }
 
 .boxes {
