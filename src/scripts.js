@@ -21,11 +21,11 @@ Promise.all([users, hydration]).then((data) => {
 });
 
 function displayHydrationInfo(userId) {
-  ouncesToday.innerText = `You have had ${hydroRepo.specificDayOz(userId, "2019/06/15")}oz today`;
-  let hydroWeek = hydroRepo.eachDayWeek0z(userId, "2019/06/15", "2019/06/21");
+  ouncesToday.innerText = `${hydroRepo.specificDayOz(userId, "2020/01/16")}oz today`;
+  let hydroWeek = hydroRepo.eachDayWeek0z(userId, "2020/01/16", "2020/01/22");
 
   hydroWeek.forEach((day) => {
-    ouncesPerDayWeek.innerHTML += `<p class="pTag">${day}</p>`;
+    ouncesPerDayWeek.innerHTML += `<p class="pTag">${day}oz</p>`;
   });
 }
 function displayUserStepGoals(userId) {

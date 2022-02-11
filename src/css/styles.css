@@ -5,7 +5,26 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family:monospace
 }
+
+.welcome {
+  font-size: 20px;
+}
+
+.ounces-today{
+  font-size: 22px;
+}
+
+.week-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid black 1px;
+  padding-bottom: 10px;
+  height: 105px;
+}
+
 
 .top-section {
 display: flex;
@@ -18,17 +37,21 @@ flex-direction: row;
 
 }
 
+/* .box-titles {
+
+} */
+
 .friends {
-  width: 20vw;
+  width: 15vw;
 }
 
 .sleep {
-  width: 25vw;
+  width: 30vw;
 }
 
 .hydration {
   width: 86vw;
-  height: 40vh;
+  height: 50vh;
 }
 
 .boxes {
@@ -52,6 +75,7 @@ flex-direction: row;
 
 .pTag {
   display: flex;
+  height: 7px;
   width: 20px;
   justify-content: center;
 }
