@@ -17,10 +17,10 @@ let hydroRepo;
 
 Promise.all([users, hydration]).then((data) => {
   userRepo = new UserRepository(data[0].userData);
-  displayUserStepGoals(2);
-  displayUserInfo(2);
+  displayUserStepGoals(3);
+  displayUserInfo(3);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
-  displayHydrationInfo(2);
+  displayHydrationInfo(3);
 });
 
 function displayUserInfo(userId){
