@@ -9,25 +9,32 @@ class HydrationRepository {
   }
 
   specificDayOz(userId, date) {
-    const findDate = this.hydrationData.find(user => {
-      if (user.date === date && user.userID === userId) {
-        return user.numOunces;
-      }});
+      const findDate = this.hydrationData.find(user => {
+        if (user.date === date && user.userID === userId) {
+          return user.numOunces;
+        }});
 
-    return findDate.numOunces;
-  }
-
-  eachDayWeek0z(userId, startDate) {
-    const findUser = this.hydrationData.filter(id => id.userID === userId);
-
-    const x;
-
-    for(var i = 0; i < 7, i++) {
-      x = findUser.indexOf(findUser[i].date === startDate);
-      return x
+      return findDate.numOunces;
     }
-    console.log(x)
-  }
+    //
+    // const filteredData = this.hydrationData.filter(user => user.userID === userId)
+    // const findDate = filteredData.find(user => user.date === date)
+    // // return findDate
+    // return findDate.numOunces;
 
+
+  eachDayWeek0z(userId, startDate, endDate) {
+    const findUser = this.hydrationData.filter(id => id.userID === userId);
+    const dayOne = findUser.find(day => day.date === startDate)
+    const daySeven = findUser.find(day => day.date === endDate)
+    let i = findUser.indexOf(dayOne)
+    let j = findUser.indexOf(daySeven)
+    let weekOz =[];
+    for(i; i <= j; i++) {
+      weekOz.push(findUser[i])
+    }
+    return weekOz.map(oz => oz.numOunces)
+  }
 }
-export default HydrationRepository
+
+export default HydrationRepository;
