@@ -9,6 +9,8 @@ const avgStepGoal = document.getElementById("avgStepGoal");
 const ouncesToday = document.getElementById("ouncesToday");
 const ouncesWeek = document.getElementById("ouncesWeek");
 const ouncesPerDayWeek = document.getElementById("ouncesPerDayWeek");
+const friendsList = document.getElementById("friendsList");
+const email = document.getElementById("email");
 
 let userRepo;
 let hydroRepo;
@@ -16,9 +18,26 @@ let hydroRepo;
 Promise.all([users, hydration]).then((data) => {
   userRepo = new UserRepository(data[0].userData);
   displayUserStepGoals(2);
+  displayUserInfo(2);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
   displayHydrationInfo(2);
 });
+
+function displayUserInfo(userId){
+  const user = userRepo.userInfo[userId];
+  console.log(user)
+
+  userName.innerText = `Welcome ${user.firstName()}`;
+  email.innerText = `${user.email}`;
+
+  user.friends.forEach(friend =>{
+    friendsList.innerHTML += `<p>${userRepo.displayUserData(friend).name}</p>`
+  })
+  console.log(userRepo.displayUserData(userId).name)
+
+
+  // friendsList.innerHTML
+}
 
 function displayHydrationInfo(userId) {
   ouncesToday.innerText = `${hydroRepo.specificDayOz(userId, "2020/01/16")}oz today`;
@@ -31,7 +50,7 @@ function displayHydrationInfo(userId) {
 function displayUserStepGoals(userId) {
   const firstUser = userRepo.userInfo[userId];
 
-  userName.innerText = `Welcome ${firstUser.firstName()}`;
+  
 
   stepGoal.innerText = `Step Goal: ${firstUser.dailyStepGoal}`;
 
