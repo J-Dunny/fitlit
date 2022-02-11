@@ -1,26 +1,39 @@
-import './css/styles.css';
-import './images/turing-logo.png';
-import {users, hydration} from './apiCalls.js'
-import UserRepository from './UserRepository';
-
+import "./css/styles.css";
+import "./images/turing-logo.png";
+import { users, hydration } from "./apiCalls";
+import UserRepository from "./UserRepository";
+import HydrationRepository from "./HydrationRepository";
 const userName = document.getElementById("userName");
 const stepGoal = document.getElementById("stepGoal");
 const avgStepGoal = document.getElementById("avgStepGoal");
+const ouncesToday = document.getElementById("ouncesToday");
+const ouncesWeek = document.getElementById("ouncesWeek");
+const ouncesPerDayWeek = document.getElementById("ouncesPerDayWeek");
 
 let userRepo;
+let hydroRepo;
 
-Promise.all([users, hydration]).then(data => {
-    userRepo = new UserRepository(data[0].userData)
-    displayUserStepGoals(3);
-
+Promise.all([users, hydration]).then((data) => {
+  userRepo = new UserRepository(data[0].userData);
+  displayUserStepGoals(3);
+  hydroRepo = new HydrationRepository(data[1].hydrationData);
+  displayHydrationInfo(1);
 });
 
-function displayUserStepGoals(userId){
-    const firstUser = userRepo.userInfo[userId];
+function displayHydrationInfo(userId) {
+  ouncesToday.innerText = `You have had ${hydroRepo.specificDayOz(userId, "2019/06/15")}oz today`;
+  let hydroWeek = hydroRepo.eachDayWeek0z(userId, "2019/06/15", "2019/06/21");
 
-    userName.innerText = `Welcome ${firstUser.firstName()}`;
+  hydroWeek.forEach((day) => {
+    ouncesPerDayWeek.innerHTML += `<p>${day}</p>`;
+  });
+}
+function displayUserStepGoals(userId) {
+  const firstUser = userRepo.userInfo[userId];
 
-    stepGoal.innerText = `Step Goal: ${firstUser.dailyStepGoal}`;
+  userName.innerText = `Welcome ${firstUser.firstName()}`;
 
-    avgStepGoal.innerText = `Average Step Goal: ${userRepo.calculateAvgStepGoal()}`;
+  stepGoal.innerText = `Step Goal: ${firstUser.dailyStepGoal}`;
+
+  avgStepGoal.innerText = `Average Step Goal: ${userRepo.calculateAvgStepGoal()}`;
 }
