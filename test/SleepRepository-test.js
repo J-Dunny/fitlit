@@ -7,7 +7,7 @@ import SleepRepository from "../src/SleepRepository";
 
 
 describe('Sleep Repository', () => {
-    // instance of user
+    
     let sleepRepo = new SleepRepository(sleepData)
 
   it('should be a function', function () {
@@ -19,7 +19,7 @@ describe('Sleep Repository', () => {
   });
 
   it('should have a method identified by user for avg hours slept per day', function () {
-    expect(sleepRepo.avgPerDay()).to.equal(7.925);
+    expect(sleepRepo.avgPerDay(1)).to.equal(7.9);
   });
 
   it.skip('should have a method for a user/s sleep quality for a specific day (identified by a date)', function () {
