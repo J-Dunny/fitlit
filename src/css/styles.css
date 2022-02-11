@@ -11,7 +11,7 @@ body, html {
 .welcome {
   font-size: 20px;
 }
-
+ 
 .ounces-today{
   font-size: 22px;
 }
@@ -41,12 +41,16 @@ flex-direction: row;
 
 } */
 
-.friends {
-  width: 15vw;
+.user-info {
+  width: 22.5vw;
 }
 
 .sleep {
-  width: 30vw;
+  width: 22.5vw;
+}
+
+hr{
+  width: 90%;
 }
 
 .hydration {
