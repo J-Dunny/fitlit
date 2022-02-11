@@ -15,9 +15,9 @@ let hydroRepo;
 
 Promise.all([users, hydration]).then((data) => {
   userRepo = new UserRepository(data[0].userData);
-  displayUserStepGoals(3);
+  displayUserStepGoals(2);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
-  displayHydrationInfo(1);
+  displayHydrationInfo(2);
 });
 
 function displayHydrationInfo(userId) {
@@ -25,7 +25,7 @@ function displayHydrationInfo(userId) {
   let hydroWeek = hydroRepo.eachDayWeek0z(userId, "2019/06/15", "2019/06/21");
 
   hydroWeek.forEach((day) => {
-    ouncesPerDayWeek.innerHTML += `<p>${day}</p>`;
+    ouncesPerDayWeek.innerHTML += `<p class="pTag">${day}</p>`;
   });
 }
 function displayUserStepGoals(userId) {
