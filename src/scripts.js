@@ -22,7 +22,7 @@ Promise.all([users, hydration]).then((data) => {
 
 function displayHydrationInfo(userId) {
   ouncesToday.innerText = `${hydroRepo.specificDayOz(userId, "2020/01/16")}oz today`;
-  let hydroWeek = hydroRepo.eachDayWeek0z(userId, "2020/01/16", "2020/01/22");
+  let hydroWeek = hydroRepo.eachDayWeek0z(userId);
 
   hydroWeek.forEach((day) => {
     ouncesPerDayWeek.innerHTML += `<p class="pTag">${day}oz</p>`;
