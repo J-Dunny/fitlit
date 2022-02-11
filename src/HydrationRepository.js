@@ -23,17 +23,41 @@ class HydrationRepository {
     // return findDate.numOunces;
 
 
-  eachDayWeek0z(userId, startDate, endDate) {
-    const findUser = this.hydrationData.filter(id => id.userID === userId);
-    const dayOne = findUser.find(day => day.date === startDate)
-    const daySeven = findUser.find(day => day.date === endDate)
-    let i = findUser.indexOf(dayOne)
-    let j = findUser.indexOf(daySeven)
-    let weekOz =[];
-    for(i; i <= j; i++) {
-      weekOz.push(findUser[i])
-    }
-    return weekOz.map(oz => oz.numOunces)
+  // eachDayWeek0z(userId) {
+  //   const findUser = this.hydrationData.filter(id => id.userID === userId);
+  //   // const dayOne = findUser.find(day => day.date === startDate)
+  //   // const daySeven = findUser.find(day => day.date === endDate)
+  //   // let i = findUser.indexOf(dayOne)
+  //   // let j = findUser.indexOf(daySeven)
+  //   let weekOz =[];
+  //   // for(i; i <= j; i++) {
+  //   //   weekOz.push(findUser[i])
+  //   // }
+  //   findUser.forEach((data, i) => {
+  //
+  //       weekOz.push(findUser[i])
+  //
+  //   }
+  //
+  //   return weekOz.map(oz => oz.numOunces)
+  // }
+
+  eachDayWeek0z(userId) {
+    const userHydroData = this.hydrationData.filter(id => id.userID === userId);
+    // console.log(userHydroData)
+    const lastElement = userHydroData.indexOf(userHydroData[userHydroData.length - 1]);
+    // console.log(lastElement)
+
+    const weekData = userHydroData.slice(lastElement-6);
+    // console.log(weekData)
+
+    // const weekData = [];
+    // userHydroData.forEach((data, i) => {
+    //   weekData.push(userHydroData[i])
+    //  }
+    // console.log(weekData)
+    // console.log(weekData.map(data => data.numOunces))
+    return weekData.map(data => data.numOunces)
   }
 }
 
