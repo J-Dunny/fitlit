@@ -11,7 +11,7 @@ body, html {
 .welcome {
   font-size: 20px;
 }
- 
+
 .ounces-today{
   font-size: 22px;
 }
@@ -32,7 +32,7 @@ flex-direction: row;
 }
 
 .daily-step-goal {
-  width: 40vw;
+  width: 25vw;
   height: 40vh;
 
 }
@@ -46,7 +46,7 @@ flex-direction: row;
 }
 
 .sleep {
-  width: 22.5vw;
+  width: 50vw;
 }
 
 hr{

@@ -13,7 +13,8 @@ const ouncesPerDayWeek = document.getElementById("ouncesPerDayWeek");
 const friendsList = document.getElementById("friendsList");
 const email = document.getElementById("email");
 const sleepLatestDay = document.getElementById("sleepLatestDay");
-const sleepLatestWeek = document.getElementById("sleepLatestWeek");
+const hoursLatestWeek = document.getElementById("hoursLatestWeek");
+const qualityLatestWeek = document.getElementById("qualityLatestWeek")
 const allTimeAvgSleepQuality = document.getElementById("allTimeAvgSleepQuality");
 const allTimeAvgHrsSlept = document.getElementById("allTimeAvgHrsSlept");
 
@@ -66,20 +67,39 @@ function displayUserStepGoals(userId) {
   avgStepGoal.innerText = `Average Step Goal: ${userRepo.calculateAvgStepGoal()}`;
 }
 
-function displaySleepInfo(userId) {
+function displaySleepInfo(userId, date) {
   // const sleepUser = sleepRepo.sleepData.[userId-1];
   // console.log(sleepRepo.sleepData.length - 1)
   const latestDay = sleepRepo.sleepData.length - 1;
-  // console.log(latestDay)
-  const startDay = latestDay - 6;
-  console.log(startDay)
+  const findUser = sleepRepo.sleepData.filter(id => id.userID === userId);
+  const userLatestDay = findUser.length - 1;
+  const userStartDay = userLatestDay - 6;
+  // console.log(findUser[userStartDay].date)
+  // let startDay = latestDay -= 350;
+  // console.log(startDay)
   const hrsSleptLatestDay = sleepRepo.hoursSleptPerDay(userId, sleepRepo.sleepData[latestDay].date)
   const qualityLatestDay = sleepRepo.sleepQualityPerDay(userId, sleepRepo.sleepData[latestDay].date)
   //look at this later
-  const hrsSleptLatestWeek = sleepRepo.avgTimePerWeek(userId, sleepRepo.sleepData[startDay].date)
-  const qualityLatestWeek = sleepRepo.avgQualityPerWeek(userId, sleepRepo.sleepData[startDay].date)
-  // console.log(sleepRepo.sleepQualityPerDay(userId, sleepRepo.sleepData[latestDay].date))
+  const hrsSleptLatestWeek = sleepRepo.timeForWeek(userId, sleepRepo.sleepData[userStartDay].date)
 
-  sleepLatestDay.innerText = `Sleep Data Latest Day: Hours Slept ${hrsSleptLatestDay} Sleep Quality ${qualityLatestDay}`
-  sleepLatestWeek.innerText = `Sleep Data Latest Week: Hours Slept ${hrsSleptLatestWeek} Sleep Quality ${qualityLatestWeek}`
+  const sleepQualityLatestWeek = sleepRepo.qualityForWeek(userId, sleepRepo.sleepData[userStartDay].date)
+  // console.log(sleepRepo.sleepQualityPerDay(userId, sleepRepo.sleepData[latestDay].date))
+  console.log(qualityLatestWeek)
+
+  const allSleepQualityAvg = sleepRepo.avgQualityAll();
+  console.log(allSleepQualityAvg)
+
+  const allTimeSleptAvg = sleepRepo.avgHoursAll();
+  console.log(allTimeSleptAvg)
+  sleepLatestDay.innerText = `Latest Day: Hours Slept ${hrsSleptLatestDay} Sleep Quality ${qualityLatestDay}`
+  hrsSleptLatestWeek.forEach(day => {
+    hoursLatestWeek.innerHTML += `<p class="pTag">${day}</p>`
+  })
+
+  sleepQualityLatestWeek.forEach(day => {
+    qualityLatestWeek.innerHTML += `<p class="pTag">${day}</p>`
+  })
+
+  allTimeAvgSleepQuality.innerText = `All-Time Average Sleep Quality: ${allSleepQualityAvg}`
+  allTimeAvgHrsSlept.innerText = `All-Time Average Hours Slept: ${allTimeSleptAvg}`
 }

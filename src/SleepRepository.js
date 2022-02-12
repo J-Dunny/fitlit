@@ -31,7 +31,7 @@ class SleepRepository {
         let i = index;
 
         const weekData = userSleepData.slice(i, i + 7).map(data => data.hoursSlept)
-        
+
         // .reduce((previousValue, currentValue) => previousValue + currentValue);
         // console.log(weekData)
         return weekData
@@ -43,13 +43,12 @@ class SleepRepository {
 
         const index = userSleepData.findIndex(data => data.date === startDate);
 
-        let i = index;
+        // let i = index;
 
-        const weekData = userSleepData.slice(i, i + 7).map(data => data.sleepQuality)
-        
+        const weekData = userSleepData.slice(index, index + 7).map(data => data.sleepQuality)
         // .reduce((previousValue, currentValue) => previousValue + currentValue);
         // console.log(weekData)
-        return weekData 
+        return weekData
     }
 
     avgQualityAll() {
@@ -68,7 +67,7 @@ class SleepRepository {
         let addSleep = sleep.reduce(
             (previousValue, currentValue) => previousValue + currentValue
         );
-        console.log(Math.round((addSleep / this.sleepData.length) * 10) / 10)
+        // console.log(Math.round((addSleep / this.sleepData.length) * 10) / 10)
         return Math.round((addSleep / this.sleepData.length) * 10) / 10
 
     }
