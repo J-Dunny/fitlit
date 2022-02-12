@@ -17,6 +17,13 @@ class SleepRepository {
         return Math.round(sleep * 10) / 10
     }
 
+    hoursSleptPerDay(userId, date) {
+      const findUser = this.sleepData.filter(id => id.userID === userId);
+      let sleep = findUser.find(day => day.date === date).hoursSlept
+      // console.log(sleep)
+      return Math.round(sleep * 10) / 10
+    }
+
     avgTimePerWeek(userId, startDate) {
         const userSleepData = this.sleepData.filter(id => id.userID === userId);
 
@@ -50,13 +57,10 @@ class SleepRepository {
         );
         console.log(this.sleepData.length)
         return Math.round((addSleep / this.sleepData.length) * 10) / 10
-        
+
     }
 
 
 }
 
 export default SleepRepository
-
-
-
