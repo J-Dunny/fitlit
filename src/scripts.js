@@ -25,12 +25,12 @@ let sleepRepo;
 Promise.all([users, hydration, sleep]).then((data) => {
   // console.log(data)
   userRepo = new UserRepository(data[0].userData);
-  displayUserStepGoals(3);
-  displayUserInfo(3);
+  displayUserStepGoals(15);
+  displayUserInfo(15);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
-  displayHydrationInfo(3);
+  displayHydrationInfo(15);
   sleepRepo = new SleepRepository(data[2].sleepData);
-  displaySleepInfo(3);
+  displaySleepInfo(15);
 
 });
 
@@ -38,7 +38,8 @@ function displayUserInfo(userId){
   const user = userRepo.userInfo[userId-1];
   // console.log(user)
 
-  userName.innerText = `Welcome ${user.firstName()}`;
+  userName.innerHTML = `<p>Welcome</p> 
+                        <p>${user.firstName()}</p>`;
   email.innerText = `${user.email}`;
 
   user.friends.forEach(friend =>{
@@ -49,11 +50,11 @@ function displayUserInfo(userId){
 }
 
 function displayHydrationInfo(userId) {
-  ouncesToday.innerText = `${hydroRepo.specificDayOz(userId, "2020/01/16")}oz today`;
+  ouncesToday.innerHTML = `<p>Today: <b>${hydroRepo.specificDayOz(userId, "2020/01/16")}oz</b></p>`;
   let hydroWeek = hydroRepo.eachDayWeek0z(userId);
 
   hydroWeek.forEach((day) => {
-    ouncesPerDayWeek.innerHTML += `<p class="pTag">${day}oz</p>`;
+    ouncesPerDayWeek.innerHTML += `<p class="pTag"><b>${day}oz</b></p>`;
   });
 }
 
@@ -62,9 +63,9 @@ function displayUserStepGoals(userId) {
   // console.log(firstUser)
 
 
-  stepGoal.innerText = `Step Goal: ${firstUser.dailyStepGoal}`;
+  stepGoal.innerHTML = `<p>Step Goal: <b>${firstUser.dailyStepGoal}</b></p>`;
 
-  avgStepGoal.innerText = `Average Step Goal: ${userRepo.calculateAvgStepGoal()}`;
+  avgStepGoal.innerHTML = `<p>Average Step Goal: <b>${userRepo.calculateAvgStepGoal()}</b></p>`;
 }
 
 function displaySleepInfo(userId, date) {
@@ -91,15 +92,15 @@ function displaySleepInfo(userId, date) {
 
   const allTimeSleptAvg = sleepRepo.avgHoursAll();
   console.log(allTimeSleptAvg)
-  sleepLatestDay.innerText = `Latest Day: Hours Slept ${hrsSleptLatestDay} Sleep Quality ${qualityLatestDay}`
+  sleepLatestDay.innerHTML = `<p>Hours: <b>${hrsSleptLatestDay}</b> Quality: <b>${qualityLatestDay}</b></p>`
   hrsSleptLatestWeek.forEach(day => {
-    hoursLatestWeek.innerHTML += `<p class="pTag">${day}</p>`
+    hoursLatestWeek.innerHTML += `<p class="pTag"><b>${day}</b></p>`
   })
 
   sleepQualityLatestWeek.forEach(day => {
-    qualityLatestWeek.innerHTML += `<p class="pTag">${day}</p>`
+    qualityLatestWeek.innerHTML += `<p class="pTag"><b>${day}</b></p>`
   })
 
-  allTimeAvgSleepQuality.innerText = `All-Time Average Sleep Quality: ${allSleepQualityAvg}`
-  allTimeAvgHrsSlept.innerText = `All-Time Average Hours Slept: ${allTimeSleptAvg}`
+  allTimeAvgSleepQuality.innerHTML = `<p>Average Quality: <b>${allSleepQualityAvg}</b></p>`
+  allTimeAvgHrsSlept.innerHTML = `<p>Average Hours: <b>${allTimeSleptAvg}</b></p>`
 }

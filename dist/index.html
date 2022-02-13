@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <h1 class="title">Activity Tracker</h1>
-    <!-- <h2 class="welcome" id="userName">Welcome "first name"</h2> -->
-    <div class="top-section">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fitlit</title>
+</head>
+
+<body>
+  <h1 class="title">Fitlit Activity Dashboard</h1>
+  <!-- <h2 class="welcome" id="userName">Welcome "first name"</h2> -->
+  <section class="dasboard-container">
+    <div class="left-section">
       <section class="boxes user-info">
         <h1 class="box-titles user-name" id="userName">Welcome "Name"</h1>
         <p class="email" id="email">"Email"</p>
         <hr>
-        <h2 class="friends">Friends</h2>
+        <h2 class=" box-titles friends">Friends</h2>
 
         <section class="friends-list" id="friendsList">
 
@@ -23,24 +26,14 @@
         <p class="step-goal" id="stepGoal">Step Goal</p>
         <p class="avg-step-goal" id="avgStepGoal">Average Step Goal</p>
       </section>
+    </div>
+    <div class="right-section">
       <section class="boxes sleep">
         <h1 class="box-titles">Sleep</h1>
         <p id="sleepLatestDay">Latest Day</p>
-        <section id="hoursLatestWeek">Latest Week Hours Slept</section>
-        <section id="qualityLatestWeek">Latest Week Sleep Quality</section>
-        <p id="allTimeAvgSleepQuality">All-Time Average Sleep Quality</p>
-        <p id="allTimeAvgHrsSlept">All-Time Average Hours Slept</p>
-        <p id=""></p>
-        <p id=></p>
-      </section>
-    </div>
-    <section class="boxes hydration">
-      <h1 class="box-titles">Hydration</h1>
-
-      <h2 class="ounces-today" id="ouncesToday">Ounces Today</h2>
-      <p>Ounces over the past week</p>
-      <div class="week-data">
-        <section class="week">
+        <p>Latest Week</p>
+        <div class="week-data">
+          <!-- <section class="week">
           <p class="pTag">Sun</p>
           <p class="pTag">Mon</p>
           <p class="pTag">Tue</p>
@@ -48,15 +41,48 @@
           <p class="pTag">Thu</p>
           <p class="pTag">Fri</p>
           <p class="pTag">Sat</p>
-        </section>
-        <section class="week ounces-per-day-week" id="ouncesPerDayWeek">
-        </section>
-      </div>
-    </section>
+        </section> -->
+          <section class="week" id="hoursLatestWeek">
+            <p>Hours:</p>
+          </section>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+          <section class="week" id="qualityLatestWeek">
+            <p>Quality:</p>
+          </section>
+        </div>
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
-  </body>
+        <p id="allTimeAvgSleepQuality">All-Time Average Sleep Quality</p>
+        <p id="allTimeAvgHrsSlept">All-Time Average Hours Slept</p>
+        <p id=""></p>
+        <p id=></p>
+      </section>
+
+      <section class="boxes hydration">
+        <h1 class="box-titles">Hydration</h1>
+
+        <p class="ounces-today" id="ouncesToday">Ounces Today</p>
+        <p>Ounces over the past week</p>
+        <div class="week-data">
+          <section class="week">
+            <p class="pTag">Sun</p>
+            <p class="pTag">Mon</p>
+            <p class="pTag">Tue</p>
+            <p class="pTag">Wed</p>
+            <p class="pTag">Thu</p>
+            <p class="pTag">Fri</p>
+            <p class="pTag">Sat</p>
+          </section>
+          <section class="week ounces-per-day-week" id="ouncesPerDayWeek">
+          </section>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
+</body>
+
 </html>
