@@ -74,7 +74,7 @@ class SleepRepository {
     const weekData = userSleepData
       .slice(index, index + 7)
       .map((data) => data.date);
-
+    
     return weekData;
   }
 }

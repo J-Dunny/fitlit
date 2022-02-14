@@ -41,7 +41,7 @@ class HydrationRepository {
       userHydroData[userHydroData.length - 1]
     );
     const weekData = userHydroData.slice(lastElement - 6);
-
+    
     return weekData.map((data) => data.date);
   }
 }

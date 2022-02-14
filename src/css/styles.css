@@ -1,9 +1,7 @@
 body,
 html {
-  /* background-image: url("https://churchviewmedicalpractice.com/images/health_images/physical-activity.jpg"); */
   color: #F5F5F5;
   background-color: #101010;
-  /* background-repeat: no-repeat; */
   height: 120vh;
   display: flex;
   flex-direction: column;
@@ -86,7 +84,6 @@ hr {
   flex-direction: column;
   align-items: center;
   border: solid #303030 1px;
-  /* box-shadow: 1px 2px; */
 }
 
 .week-font {
@@ -111,8 +108,6 @@ hr {
 
 .week-sleep {
   display: flex;
-  /* flex-direction: row;
-  width: 50vw; */
   justify-content: space-between;
 }
 
