@@ -1,76 +1,72 @@
 class SleepRepository {
-    constructor(sleepData) {
-        this.sleepData = sleepData;
-    }
+  constructor(sleepData) {
+    this.sleepData = sleepData;
+  }
 
-    avgPerDay(userId) {
-        const findUser = this.sleepData.filter(id => id.userID === userId);
-        const totalSleep = findUser.map(sleep => sleep.hoursSlept).reduce((previousValue, currentValue) => previousValue + currentValue);
+  avgPerDay(userId) {
+    const findUser = this.sleepData.filter((id) => id.userID === userId);
+    const totalSleep = findUser
+      .map((sleep) => sleep.hoursSlept)
+      .reduce((previousValue, currentValue) => previousValue + currentValue);
 
-        let avgSleep = totalSleep / findUser.length;
-        return Math.round(avgSleep * 10) / 10
-    }
+    let avgSleep = totalSleep / findUser.length;
+    
+    return Math.round(avgSleep * 10) / 10;
+  }
 
-    sleepQualityPerDay(userId, date) {
-        const findUser = this.sleepData.filter(id => id.userID === userId);
-        let sleep = findUser.find(day => day.date === date).sleepQuality
-        return Math.round(sleep * 10) / 10
-    }
+  sleepQualityPerDay(userId, date) {
+    const findUser = this.sleepData.filter((id) => id.userID === userId);
+    let sleep = findUser.find((day) => day.date === date).sleepQuality;
 
-    hoursSleptPerDay(userId, date) {
-      const findUser = this.sleepData.filter(id => id.userID === userId);
-      let sleep = findUser.find(day => day.date === date).hoursSlept
-      return Math.round(sleep * 10) / 10
-    }
+    return Math.round(sleep * 10) / 10;
+  }
 
-    timeForWeek(userId, startDate) {
-        const userSleepData = this.sleepData.filter(id => id.userID === userId);
+  hoursSleptPerDay(userId, date) {
+    const findUser = this.sleepData.filter((id) => id.userID === userId);
+    let sleep = findUser.find((day) => day.date === date).hoursSlept;
 
-        const index = userSleepData.findIndex(data => data.date === startDate);
+    return Math.round(sleep * 10) / 10;
+  }
 
-        let i = index;
+  timeForWeek(userId, startDate) {
+    const userSleepData = this.sleepData.filter((id) => id.userID === userId);
+    const index = userSleepData.findIndex((data) => data.date === startDate);
+    let i = index;
 
-        const weekData = userSleepData.slice(i, i + 7).map(data => data.hoursSlept)
+    const weekData = userSleepData
+      .slice(i, i + 7)
+      .map((data) => data.hoursSlept);
 
-        // .reduce((previousValue, currentValue) => previousValue + currentValue);
-        // console.log(weekData)
-        return weekData
+    return weekData;
+  }
 
-    }
+  qualityForWeek(userId, startDate) {
+    const userSleepData = this.sleepData.filter((id) => id.userID === userId);
+    const index = userSleepData.findIndex((data) => data.date === startDate);
+    const weekData = userSleepData
+      .slice(index, index + 7)
+      .map((data) => data.sleepQuality);
 
-    qualityForWeek(userId, startDate) {
-        const userSleepData = this.sleepData.filter(id => id.userID === userId);
+    return weekData;
+  }
 
-        const index = userSleepData.findIndex(data => data.date === startDate);
+  avgQualityAll() {
+    let sleep = this.sleepData.map((sleep) => sleep.sleepQuality);
+    let addSleep = sleep.reduce(
+      (previousValue, currentValue) => previousValue + currentValue
+    );
 
-        // let i = index;
+    return Math.round((addSleep / this.sleepData.length) * 10) / 10;
+  }
 
-        const weekData = userSleepData.slice(index, index + 7).map(data => data.sleepQuality)
-        // .reduce((previousValue, currentValue) => previousValue + currentValue);
-        // console.log(weekData)
-        return weekData
-    }
+  avgHoursAll() {
+    let sleep = this.sleepData.map((sleep) => sleep.hoursSlept);
+    let addSleep = sleep.reduce(
+      (previousValue, currentValue) => previousValue + currentValue
+    );
 
-    avgQualityAll() {
-        let sleep = this.sleepData.map(sleep => sleep.sleepQuality);
-
-        let addSleep = sleep.reduce(
-            (previousValue, currentValue) => previousValue + currentValue
-        );
-        return Math.round((addSleep / this.sleepData.length) * 10) / 10
-
-    }
-
-    avgHoursAll() {
-        let sleep = this.sleepData.map(sleep => sleep.hoursSlept);
-
-        let addSleep = sleep.reduce(
-            (previousValue, currentValue) => previousValue + currentValue
-        );
-        // console.log(Math.round((addSleep / this.sleepData.length) * 10) / 10)
-        return Math.round((addSleep / this.sleepData.length) * 10) / 10
-
-    }
+    return Math.round((addSleep / this.sleepData.length) * 10) / 10;
+  }
 }
 
-export default SleepRepository
+export default SleepRepository;
