@@ -32,6 +32,18 @@ class HydrationRepository {
 
     return weekData.map((data) => data.numOunces);
   }
+
+  datesWeek(userId) {
+    const userHydroData = this.hydrationData.filter(
+      (id) => id.userID === userId
+    );
+    const lastElement = userHydroData.indexOf(
+      userHydroData[userHydroData.length - 1]
+    );
+    const weekData = userHydroData.slice(lastElement - 6);
+
+    return weekData.map((data) => data.date);
+  }
 }
 
 export default HydrationRepository;

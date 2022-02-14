@@ -10,7 +10,7 @@ class SleepRepository {
       .reduce((previousValue, currentValue) => previousValue + currentValue);
 
     let avgSleep = totalSleep / findUser.length;
-    
+
     return Math.round(avgSleep * 10) / 10;
   }
 
@@ -66,6 +66,16 @@ class SleepRepository {
     );
 
     return Math.round((addSleep / this.sleepData.length) * 10) / 10;
+  }
+
+  datesWeek(userId, startDate) {
+    const userSleepData = this.sleepData.filter((id) => id.userID === userId);
+    const index = userSleepData.findIndex((data) => data.date === startDate);
+    const weekData = userSleepData
+      .slice(index, index + 7)
+      .map((data) => data.date);
+
+    return weekData;
   }
 }
 
