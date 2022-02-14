@@ -1,11 +1,9 @@
 import { expect } from "chai";
 import UserRepository from "../src/UserRepository";
-import userData from "../src/data/users"
-import User from '../src/user';
+import userData from "../src/data/users";
+import User from "../src/user";
+
 let userRepo = new UserRepository(userData);
-// let users = userData.map(user => new User(user.id,
-//   user.name, user.address, user.email, user.strideLength,
-//   user.dailyStepGoal, user.friends))
 
 describe("User Repository", () => {
   it("should be a function", function () {

@@ -1,14 +1,22 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+body,
+html {
+  /* background-image: url("https://churchviewmedicalpractice.com/images/health_images/physical-activity.jpg"); */
+  color: #F5F5F5;
+  background-color: #101010;
+  /* background-repeat: no-repeat; */
   height: 120vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.dasboard-container{
+.title{
+  margin-top: 30px;
+  font-size: 40px;
+}
+.dasboard-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,20 +37,22 @@ body, html {
   height: auto;
 }
 
-
 .top-section {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .daily-step-goal {
   width: 25vw;
   height: 26vh;
+}
 
+.data-color {
+  color: #ff9900;
 }
 
 p {
-  margin:2px;
+  margin: 2px;
   margin-top: 5px;
   margin-bottom: 0;
 }
@@ -53,47 +63,58 @@ p {
 }
 
 .sleep {
-  width: 42vw;
+  width: 50vw;
   height: 42vh;
 }
 
-hr{
+hr {
   width: 90%;
 }
 
 .hydration {
-  width: 42vw;
+  width: 50vw;
   height: 34vh;
 }
 
 .boxes {
-  /* height:min-content;
-  width:max-content; */
   padding: 15px;
   margin: 5px;
   font-size: 20px;
-  background-color: white;
+  background-color: #202020;
   border-radius: 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid black 1px;
-  box-shadow: 1px 2px;
+  border: solid #303030 1px;
+  /* box-shadow: 1px 2px; */
+}
+
+.week-font {
+  font-size: 15px;
 }
 
 .week {
   display: flex;
   flex-direction: row;
-  width: 40vw;
+  width: 50vw;
   justify-content: space-around;
 }
 
-/* .pTag {
+.week-data {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sleep-row {
+  display: inline-block;
+}
+
+.week-sleep {
   display: flex;
-  height: 7px;
-  width: 20px;
-  justify-content: center;
-} */
+  /* flex-direction: row;
+  width: 50vw; */
+  justify-content: space-between;
+}
 
 .box-titles {
   font-size: 30px;
