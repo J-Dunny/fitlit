@@ -1,10 +1,7 @@
 import { expect } from "chai";
 import HydrationRepository from "../src/HydrationRepository";
-import UserRepository from "../src/UserRepository";
-import userData from "../src/data/users";
 import hydrationData from "../src/data/hydration";
 
-let userRepo = new UserRepository(userData);
 
 describe("Hydration Repository", () => {
   let hydroRepo = new HydrationRepository(hydrationData);
@@ -34,6 +31,18 @@ describe("Hydration Repository", () => {
       50,
       50,
       43,
+    ]);
+  });
+
+  it("Method for returning the dates of displayed data", function () {
+    expect(hydroRepo.datesWeek(1)).to.deep.equal([
+      '2019/06/16',
+      '2019/06/17',
+      '2019/06/18',
+      '2019/06/19',
+      '2019/06/20',
+      '2019/06/21',
+      '2019/06/22'
     ]);
   });
 });

@@ -9,16 +9,13 @@ const userName = document.getElementById("userName");
 const stepGoal = document.getElementById("stepGoal");
 const avgStepGoal = document.getElementById("avgStepGoal");
 const ouncesToday = document.getElementById("ouncesToday");
-const ouncesWeek = document.getElementById("ouncesWeek");
 const ouncesPerDayWeek = document.getElementById("ouncesPerDayWeek");
 const friendsList = document.getElementById("friendsList");
 const email = document.getElementById("email");
 const sleepLatestDay = document.getElementById("sleepLatestDay");
 const hoursLatestWeek = document.getElementById("hoursLatestWeek");
 const qualityLatestWeek = document.getElementById("qualityLatestWeek");
-const allTimeAvgSleepQuality = document.getElementById(
-  "allTimeAvgSleepQuality"
-);
+const allTimeAvgSleepQuality = document.getElementById("allTimeAvgSleepQuality");
 const allTimeAvgHrsSlept = document.getElementById("allTimeAvgHrsSlept");
 const errorMsg = document.querySelector('.title');
 const week = document.getElementById("week");
@@ -30,12 +27,12 @@ let sleepRepo;
 
 Promise.all([users, hydration, sleep]).then((data) => {
   userRepo = new UserRepository(data[0].userData);
-  displayUserStepGoals(15);
-  displayUserInfo(15);
+  displayUserStepGoals(1);
+  displayUserInfo(1);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
-  displayHydrationInfo(15);
+  displayHydrationInfo(1);
   sleepRepo = new SleepRepository(data[2].sleepData);
-  displaySleepInfo(15);
+  displaySleepInfo(1);
 }).catch(err => errorMsg.innerText = "Data Not Found");
 
 function displayUserInfo(userId) {
@@ -96,7 +93,7 @@ function displaySleepInfo(userId) {
   );
   const allSleepQualityAvg = sleepRepo.avgQualityAll();
   const allTimeSleptAvg = sleepRepo.avgHoursAll();
-  let sleepDaysWeek = sleepRepo.datesWeek(userId, sleepRepo.sleepData[userStartDay].date)
+  let sleepDaysWeek = sleepRepo.datesWeek(userId, findUser[userStartDay].date)
 
   sleepDaysWeek.forEach((day) => {
     sleepDates.innerHTML += `<p class="pTag week-font data-color"><b>${day}</b></p>`

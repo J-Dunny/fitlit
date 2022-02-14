@@ -56,4 +56,16 @@ describe("Sleep Repository", () => {
   it("For all users, the average hours slept", function () {
     expect(sleepRepo.avgHoursAll()).to.equal(7.8);
   });
+
+  it("Method for returning the dates of displayed data", function () {
+    expect(sleepRepo.datesWeek(1, "2019/06/15")).to.deep.equal([
+      '2019/06/15',
+      '2019/06/16',
+      '2019/06/17',
+      '2019/06/18',
+      '2019/06/19',
+      '2019/06/20',
+      '2019/06/21'
+    ]);
+  });
 });
