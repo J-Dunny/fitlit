@@ -61,7 +61,7 @@ p {
 }
 
 .sleep {
-  width: 50vw;
+  width: 60vw;
   height: 42vh;
 }
 
@@ -70,7 +70,7 @@ hr {
 }
 
 .hydration {
-  width: 50vw;
+  width: 60vw;
   height: 34vh;
 }
 
@@ -93,7 +93,7 @@ hr {
 .week {
   display: flex;
   flex-direction: row;
-  width: 50vw;
+  width: 60vw;
   justify-content: space-around;
 }
 
@@ -112,6 +112,13 @@ hr {
 }
 
 .box-titles {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 30px;
   margin-top: 1px;
+}
+
+.user-name {
+  margin-top: 0;
 }
