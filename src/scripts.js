@@ -37,9 +37,8 @@ Promise.all([users, hydration, sleep]).then((data) => {
 
 function displayUserInfo(userId) {
   const user = userRepo.userInfo[userId - 1];
-
-  userName.innerHTML = `<p>Welcome</p>
-                        <p class="data-color ">${user.firstName()}</p>`;
+  userName.innerHTML = `<h1>Welcome</h1> 
+                        <h2 class="data-color user-name">${user.firstName()}</h2>`;
   email.innerText = `${user.email}`;
   user.friends.forEach((friend) => {
     friendsList.innerHTML += `<p>${userRepo.displayUserData(friend).name}</p>`;
@@ -96,16 +95,16 @@ function displaySleepInfo(userId) {
   let sleepDaysWeek = sleepRepo.datesWeek(userId, findUser[userStartDay].date)
 
   sleepDaysWeek.forEach((day) => {
-    sleepDates.innerHTML += `<p class="pTag week-font data-color"><b>${day}</b></p>`
+    sleepDates.innerHTML += `<p class="pDate week-font data-color"><b>${day}</b></p>`
   })
 
   sleepLatestDay.innerHTML = `<p>Hours: <b class="data-color">${hrsSleptLatestDay}</b> Quality: <b class="data-color">${qualityLatestDay}</b></p>`;
   hrsSleptLatestWeek.forEach((day) => {
-    hoursLatestWeek.innerHTML += `<p class="pTag"><b class="data-color">Hrs-${day}</b></p>`;
+    hoursLatestWeek.innerHTML += `<p class="pHrs"><b class="data-color">Hr-${day}</b></p>`;
   });
 
   sleepQualityLatestWeek.forEach((day) => {
-    qualityLatestWeek.innerHTML += `<p class="pTag"><b class="data-color">Q-${day}</b></p>`;
+    qualityLatestWeek.innerHTML += `<p class="pQuality"><b class="data-color">Q-${day}</b></p>`;
   });
 
   allTimeAvgSleepQuality.innerHTML = `<p>Average Quality: <b class="data-color">${allSleepQualityAvg}</b></p>`;
