@@ -16,14 +16,28 @@ describe('User', () => {
       8
     ]
   })
-  
+
+  const blankNameUser = new User({
+    "id": 1,
+    "name": "",
+    "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+    "email": "Diana.Hayes1@hotmail.com",
+    "strideLength": 4.3,
+    "dailyStepGoal": 10000,
+    "friends": [
+      16,
+      4,
+      8
+    ]
+  })
+
   it('should be a function', function () {
     expect(User).to.be.a('function');
   });
 
   it('should hold the id of the user passed in as an object', function () {
     expect(newUser.id).to.equal(1);
-  });  
+  });
 
   it('should hold the first and last name of the user', function () {
     expect(newUser.name).to.equal("Luisa Hane");
@@ -55,5 +69,9 @@ describe('User', () => {
 
   it('should have a method that returns only the first name of the user', function () {
     expect(newUser.firstName()).to.equal("Luisa");
-  });  
+  });
+
+  it('should return error message if name info is missing', function () {
+    expect(blankNameUser.firstName()).to.equal("Sorry, this user has no name!")
+  })
 });
