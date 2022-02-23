@@ -1,4 +1,4 @@
-import User from "../src/user";
+import User from "../src/User";
 class UserRepository {
   constructor(userInfo) {
     this.userInfo = userInfo.map((user) => new User(user));

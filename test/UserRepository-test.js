@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import UserRepository from "../src/UserRepository";
 import userData from "../src/data/users";
-import User from "../src/user";
+import User from "../src/User";
 
 let userRepo = new UserRepository(userData);
 
