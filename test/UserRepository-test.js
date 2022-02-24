@@ -17,6 +17,11 @@ describe("User Repository", () => {
   it("should display user data", function () {
     expect(userRepo.displayUserData(1)).to.deep.equal(userRepo.userInfo[0]);
   });
+
+  it("should return error message if user does not exist", function () {
+    expect(userRepo.displayUserData(53)).to.equal("User does not exist");
+  });
+
   it("should calculate the average step goal", function () {
     expect(userRepo.calculateAvgStepGoal()).to.deep.equal(6700);
   });

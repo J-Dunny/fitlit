@@ -6,6 +6,9 @@ class UserRepository {
 
   displayUserData(userID) {
     let userInfo = this.userInfo.find((user) => user.id === userID);
+    if(!userInfo) {
+      return "User does not exist"
+    }
     return userInfo;
   }
 
