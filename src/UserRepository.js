@@ -1,11 +1,18 @@
-import User from "../src/user";
+import User from "../src/User";
 class UserRepository {
-  constructor(userInfo) {
+  constructor() {
+    this.userInfo = []
+  }
+
+  loadUserInfo(userInfo) {
     this.userInfo = userInfo.map((user) => new User(user));
   }
 
   displayUserData(userID) {
     let userInfo = this.userInfo.find((user) => user.id === userID);
+    if(!userInfo) {
+      return "User does not exist"
+    }
     return userInfo;
   }
 

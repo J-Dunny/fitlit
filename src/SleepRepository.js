@@ -3,8 +3,15 @@ class SleepRepository {
     this.sleepData = sleepData;
   }
 
+  findUser(userId) {
+    if (!this.sleepData.map(data => data.userID).includes(userId)) {
+      return "User does not exist"
+    }
+  return this.sleepData.filter((id) => id.userID === userId)
+  }
+
   avgPerDay(userId) {
-    const findUser = this.sleepData.filter((id) => id.userID === userId);
+  const findUser = this.findUser(userId)
     const totalSleep = findUser
       .map((sleep) => sleep.hoursSlept)
       .reduce((previousValue, currentValue) => previousValue + currentValue);
@@ -15,21 +22,21 @@ class SleepRepository {
   }
 
   sleepQualityPerDay(userId, date) {
-    const findUser = this.sleepData.filter((id) => id.userID === userId);
+    const findUser = this.findUser(userId)
     let sleep = findUser.find((day) => day.date === date).sleepQuality;
 
     return Math.round(sleep * 10) / 10;
   }
 
   hoursSleptPerDay(userId, date) {
-    const findUser = this.sleepData.filter((id) => id.userID === userId);
+    const findUser = this.findUser(userId)
     let sleep = findUser.find((day) => day.date === date).hoursSlept;
 
     return Math.round(sleep * 10) / 10;
   }
 
   timeForWeek(userId, startDate) {
-    const userSleepData = this.sleepData.filter((id) => id.userID === userId);
+    const userSleepData = this.findUser(userId);
     const index = userSleepData.findIndex((data) => data.date === startDate);
     let i = index;
 
@@ -41,7 +48,7 @@ class SleepRepository {
   }
 
   qualityForWeek(userId, startDate) {
-    const userSleepData = this.sleepData.filter((id) => id.userID === userId);
+    const userSleepData = this.findUser(userId)
     const index = userSleepData.findIndex((data) => data.date === startDate);
     const weekData = userSleepData
       .slice(index, index + 7)
@@ -69,12 +76,12 @@ class SleepRepository {
   }
 
   datesWeek(userId, startDate) {
-    const userSleepData = this.sleepData.filter((id) => id.userID === userId);
+    const userSleepData = this.findUser(userId);
     const index = userSleepData.findIndex((data) => data.date === startDate);
     const weekData = userSleepData
       .slice(index, index + 7)
       .map((data) => data.date);
-    
+
     return weekData;
   }
 }
