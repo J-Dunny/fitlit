@@ -11,9 +11,13 @@ class User {
 
   firstName() {
     let fullName = this.name;
+    if (fullName === '') {
+      return "Sorry, this user has no name!"
+    } else {
     let splitName = fullName.split(" ");
     return splitName[0];
   }
+}
 }
 
 export default User;

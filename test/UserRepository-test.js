@@ -17,8 +17,8 @@ describe("User Repository", () => {
   it("should display user data", function () {
     expect(userRepo.displayUserData(1)).to.deep.equal(userRepo.userInfo[0]);
   });
-
   it("should calculate the average step goal", function () {
     expect(userRepo.calculateAvgStepGoal()).to.deep.equal(6700);
   });
+
 });

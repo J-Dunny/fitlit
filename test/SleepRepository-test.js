@@ -17,6 +17,10 @@ describe("Sleep Repository", () => {
     expect(sleepRepo.avgPerDay(1)).to.equal(7.9);
   });
 
+  it("should return error message if user does not exist", function () {
+    expect(sleepRepo.findUser(51)).to.equal("User does not exist")
+  })
+
   it("should have a method for a user/s sleep quality for a specific day (identified by a date)", function () {
     expect(sleepRepo.sleepQualityPerDay(1, "2019/06/15")).to.equal(2.2);
   });
