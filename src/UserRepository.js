@@ -1,6 +1,10 @@
 import User from "../src/User";
 class UserRepository {
-  constructor(userInfo) {
+  constructor() {
+    this.userInfo = []
+  }
+
+  loadUserInfo(userInfo) {
     this.userInfo = userInfo.map((user) => new User(user));
   }
 

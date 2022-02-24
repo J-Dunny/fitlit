@@ -3,7 +3,8 @@ import UserRepository from "../src/UserRepository";
 import userData from "../src/data/users";
 import User from "../src/User";
 
-let userRepo = new UserRepository(userData);
+let userRepo = new UserRepository();
+userRepo.loadUserInfo(userData)
 
 describe("User Repository", () => {
   it("should be a function", function () {
