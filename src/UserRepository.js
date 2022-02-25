@@ -5,11 +5,11 @@ class UserRepository {
   }
 
   loadUserInfo(userInfo) {
-    this.userInfo = userInfo.map((user) => new User(user));
+    this.userInfo = userInfo.map(user => new User(user));
   }
 
   displayUserData(userID) {
-    let userInfo = this.userInfo.find((user) => user.id === userID);
+    let userInfo = this.userInfo.find(user => user.id === userID);
     if(!userInfo) {
       return "User does not exist"
     }

@@ -25,8 +25,10 @@ let userRepo;
 let hydroRepo;
 let sleepRepo;
 
-Promise.all([users, hydration, sleep]).then((data) => {
-  userRepo = new UserRepository(data[0].userData);
+window.onload = (event) => {
+  Promise.all([users, hydration, sleep]).then((data) => {
+  userRepo = new UserRepository();
+  userRepo.loadUserInfo(data[0].userData)
   displayUserStepGoals(1);
   displayUserInfo(1);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
@@ -34,10 +36,11 @@ Promise.all([users, hydration, sleep]).then((data) => {
   sleepRepo = new SleepRepository(data[2].sleepData);
   displaySleepInfo(1);
 }).catch(err => errorMsg.innerText = "Data Not Found");
+}
 
 function displayUserInfo(userId) {
   const user = userRepo.userInfo[userId - 1];
-  userName.innerHTML = `<h1>Welcome</h1> 
+  userName.innerHTML = `<h1>Welcome</h1>
                         <h2 class="data-color user-name">${user.firstName()}</h2>`;
   email.innerText = `${user.email}`;
   user.friends.forEach((friend) => {
