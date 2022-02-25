@@ -1,9 +1,9 @@
 import { expect } from "chai";
 import Activity from "../src/Activity";
-import activityData from "../src/data/hydration";
+import activityData from "../src/data/activityData";
 
 describe("Activity Repository", () => {
-  let activity = new Activity(hydrationData);
+  let activity = new Activity(activityData);
 
   it("should be a function", function () {
     expect(Activity).to.be.a("function");
@@ -13,8 +13,12 @@ describe("Activity Repository", () => {
     expect(activity).to.be.an.instanceOf(Activity);
   });
 
+  it("should return error message if user does not exist", function () {
+    expect(activity.findUser(52)).to.equal("User does not exist");
+  });
+
   it("should have a method that returns miles walked in a specific day", function () {
-    expect(activity.milesPerDay(date)).to.equal(11)
+    expect(activity.milesPerDay(1, "2019/06/15")).to.equal(1.79)
   })
 
   it("should have a method that returns how many active minutes in a given day", function () {
@@ -31,7 +35,7 @@ describe("Activity Repository", () => {
   })
 
   it("should have a method that finds all days where step goal was exceeded", function () {
-    expect(activity.allDaysStepGoal().to.equal([date, date, date??]))
+    expect(activity.allDaysStepGoal().to.equal(["date", "date", "date??"]))
   })
 
   it("should have a method that finds step climbing record", function () {
