@@ -50,7 +50,7 @@ describe("Activity Repository", () => {
   })
 
   it.only("should have a method that returns average number of steps taken for all users on a specific day", function () {
-    expect(activity.allUserAvgSteps()).to.equal(5500)
+    expect(activity.allUserAvgSteps("2019/06/15")).to.equal(6026.6)
   })
 
   it("should have a method that returns average number of minutes active on a specific", function () {

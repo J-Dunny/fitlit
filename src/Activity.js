@@ -113,6 +113,23 @@ class Activity {
 
     return Math.round(avgStairs * 100)/100
   }
+
+  allUserAvgSteps(date) {
+    let allSteps = this.activityData.reduce((a, b) => {
+      if(b.date === date) {
+        a.push(b.numSteps)
+      }
+      return a
+    }, [])
+
+    let allStepsSum = allSteps.reduce((a, b) => {
+      a += b
+      return a
+    }, 0)
+    
+    let avgSteps = allStepsSum/allSteps.length
+    return Math.round(avgSteps * 100)/100
+  }
 }
 
 export default Activity;
