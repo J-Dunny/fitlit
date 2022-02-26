@@ -20,6 +20,7 @@ const allTimeAvgHrsSlept = document.getElementById("allTimeAvgHrsSlept");
 const errorMsg = document.querySelector('.title');
 const week = document.getElementById("week");
 const sleepDates = document.getElementById("sleepDates")
+const stepsLatestDay = document.getElementById("stepsLatestDay")
 
 let userRepo;
 let hydroRepo;
@@ -112,4 +113,8 @@ function displaySleepInfo(userId) {
 
   allTimeAvgSleepQuality.innerHTML = `<p>Average Quality: <b class="data-color">${allSleepQualityAvg}</b></p>`;
   allTimeAvgHrsSlept.innerHTML = `<p>Average Hours: <b class="data-color">${allTimeSleptAvg}</b></p>`;
+}
+
+function displayStepsLatestDay(){
+  
 }

@@ -147,6 +147,14 @@ class Activity {
     let avgMins = allMinsSum/allMins.length
     return Math.round(avgMins * 100)/100
   }
+
+  findLatestDaySteps(userId){
+    const findUser = this.findUser(userId)
+    const userData = findUser.map(data => data.numSteps)
+    console.log(userData[userData.length-1])
+    return userData[userData.length-1]
+
+  }
 }
 
 export default Activity;
