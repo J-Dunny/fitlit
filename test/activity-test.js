@@ -37,15 +37,15 @@ describe("Activity Repository", () => {
     expect(activity.hitDailyStepGoal(1, "2019/06/22")).to.equal(true)
   })
 
-  it.only("should have a method that finds all days where step goal was exceeded", function () {
+  it("should have a method that finds all days where step goal was exceeded", function () {
     expect(activity.allDaysStepGoal(1)).to.deep.equal(["2019/06/17", "2019/06/20", "2019/06/22"])
   })
 
   it("should have a method that finds step climbing record", function () {
-    expect(activity.stairClimbRecord()).to.equal(666)
+    expect(activity.stairClimbRecord(1)).to.equal(36)
   })
 
-  it("should have a method that returns average number of stairs climbed for all users on a specific day", function () {
+  it.only("should have a method that returns average number of stairs climbed for all users on a specific day", function () {
     expect(activity.allUserAvgStairs()).to.equal(1300)
   })
 

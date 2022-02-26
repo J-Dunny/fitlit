@@ -84,6 +84,17 @@ class Activity {
     console.log(week)
     return week
   }
+
+  stairClimbRecord(userId) {
+    let findUser = this.findUser(userId)
+    let stairs = findUser.map(user => {
+      return user.flightsOfStairs
+    }).sort((a, b) => {
+      return b - a
+    })
+
+    return stairs.shift()
+  }
 }
 
 export default Activity;
