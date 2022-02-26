@@ -95,6 +95,19 @@ class Activity {
 
     return stairs.shift()
   }
+
+  allUserAvgStairs() {
+    let allStairs = this.activityData.map(user => {
+      return user.flightsOfStairs
+    }).reduce((a, b) => {
+      a += b
+      return a
+    }, 0)
+
+    let avgStairs = allStairs/this.activityData.length
+
+    return Math.round(avgStairs * 100)/100
+  }
 }
 
 export default Activity;
