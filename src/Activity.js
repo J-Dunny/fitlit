@@ -126,9 +126,26 @@ class Activity {
       a += b
       return a
     }, 0)
-    
+
     let avgSteps = allStepsSum/allSteps.length
     return Math.round(avgSteps * 100)/100
+  }
+
+  allUserAvgminutes(date) {
+    let allMins = this.activityData.reduce((a, b) => {
+      if(b.date === date) {
+        a.push(b.minutesActive)
+      }
+      return a
+    }, [])
+
+    let allMinsSum = allMins.reduce((a, b) => {
+      a += b
+      return a
+    }, 0)
+
+    let avgMins = allMinsSum/allMins.length
+    return Math.round(avgMins * 100)/100
   }
 }
 
