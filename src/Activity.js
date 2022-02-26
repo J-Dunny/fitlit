@@ -96,15 +96,20 @@ class Activity {
     return stairs.shift()
   }
 
-  allUserAvgStairs() {
-    let allStairs = this.activityData.map(user => {
-      return user.flightsOfStairs
-    }).reduce((a, b) => {
+  allUserAvgStairs(date) {
+    let allStairs = this.activityData.reduce((a, b) => {
+      if(b.date === date) {
+        a.push(b.flightsOfStairs)
+      }
+      return a
+    }, [])
+
+    let allStairsSum = allStairs.reduce((a, b) => {
       a += b
       return a
     }, 0)
 
-    let avgStairs = allStairs/this.activityData.length
+    let avgStairs = allStairsSum/allStairs.length
 
     return Math.round(avgStairs * 100)/100
   }
