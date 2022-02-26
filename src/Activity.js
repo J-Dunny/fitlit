@@ -74,6 +74,15 @@ class Activity {
         return user
       }
     })
+
+    let week = findUser.reduce((a, b) => {
+      if(b.numSteps >= user.dailyStepGoal) {
+        a.push(b.date)
+      }
+      return a
+    }, [])
+    console.log(week)
+    return week
   }
 }
 
