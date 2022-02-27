@@ -26,6 +26,8 @@ const numMinutesActive = document.getElementById("numMinutesActive")
 const milesWalkedLatestDay = document.getElementById("milesWalkedLatestDay")
 const avgActivityAllUsers = document.getElementById("avgActivityAllUsers")
 const stepsLatestWeek = document.getElementById("stepsLatestWeek")
+const minsLatestWeek = document.getElementById("minsLatestWeek")
+const flightsLatestWeek = document.getElementById("flightsLatestWeek")
 
 
 let userRepo;
@@ -51,6 +53,7 @@ window.onload = (event) => {
   displayActiveMinLatestDay(1)
   milesLatestDay(1)
   showAllUsersActivity(1)
+  showActivityForWeek(1)
 
 }).catch(err => console.log(err));
 }
@@ -159,29 +162,38 @@ function showAllUsersActivity(userId){
 
 
 function showActivityForWeek(userId){
+  let stepsWeek = activityRepo.activityStepsForWeek(userId);
 
-  const latestDay = activityRepo.activityData.length - 1;
-  const findUser = sleepRepo.sleepData.filter((id) => id.userID === userId);
-  
-  const userLatestDay = findUser.length - 1;
-  const userStartDay = userLatestDay - 6;
-  let stepsDaysWeek = activityRepo.activityStepsForWeek(userId, findUser[userStartDay].date )
+  stepsWeek.forEach(day => {
+    stepsLatestWeek.innerHTML += `<p class="pTag data-color"><b>${day}</b></p>`
+  })
 
-  stepsLatestWeek.innerHTML += `<p`
+  let minsWeek = activityRepo.activityMinsForWeek(userId);
+    
+  minsWeek.forEach(day => {
+    minsLatestWeek.innerHTML += `<p class="pTag data-color"><b>${day}</b></p>`
+  })
+
+  let flightsWeek = activityRepo.activityFlightsWeek(userId);
+
+  flightsWeek.forEach(day => {
+    flightsLatestWeek.innerHTML += `<p class="pTag data-color"><b>${day}</b></p>`
+  })
+
+
+
+
 }
 
+// let hydroWeek = hydroRepo.eachDayWeek0z(userId);
+//   let daysWeek = hydroRepo.datesWeek(userId)
+
+//   daysWeek.forEach((date) => {
+//     week.innerHTML += `<p class="pTag week-font data-color"><b>${date}</b></p>`
+//   })
+//   hydroWeek.forEach((day) => {
+//     ouncesPerDayWeek.innerHTML += `<p class="pTag"><b class="data-color">${day}oz</b></p>`;
 
 
 
-// const latestDay = sleepRepo.sleepData.length - 1;
-//   const findUser = sleepRepo.sleepData.filter((id) => id.userID === userId);
-  
-//   const userLatestDay = findUser.length - 1;
-//   const userStartDay = userLatestDay - 6;
 
-// let sleepDaysWeek = sleepRepo.datesWeek(userId, findUser[userStartDay].date)
-  
-
-// sleepDaysWeek.forEach((day) => {
-//   sleepDates.innerHTML += `<p class="pDate week-font data-color"><b>${day}</b></p>`
-// })
