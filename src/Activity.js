@@ -48,6 +48,45 @@ class Activity {
     return sum
   }
 
+//////
+// eachDayWeek0z(userId) {
+//   const userHydroData = this.findUser(userId)
+//   const lastElement = userHydroData.indexOf(
+//     userHydroData[userHydroData.length - 1]
+//   );
+//   const weekData = userHydroData.slice(lastElement - 6);
+
+//   return weekData.map((data) => data.numOunces);
+// }
+/////
+
+activityFlightsWeek(userId){
+  const userFlightsData = this.findUser(userId)
+  const lastElement = userFlightsData.indexOf(userFlightsData[userFlightsData.length-1]);
+  const weekData = userFlightsData.slice(lastElement - 6);
+  
+  return weekData.map(data => data.flightsOfStairs)
+}
+
+
+activityStepsForWeek(userId){
+  const userData = this.findUser(userId)
+  const lastElement = userData.indexOf(userData[userData.length-1]);
+  const weekData = userData.slice(lastElement - 6);
+  
+  return weekData.map(data => data.numSteps)
+}
+
+
+activityMinsForWeek(userId){
+  const userData = this.findUser(userId)
+  const lastElement = userData.indexOf(userData[userData.length-1]);
+  const weekData = userData.slice(lastElement - 6);
+  
+  console.log(weekData.map(data => data.minutesActive))
+  return weekData.map(data => data.minutesActive)
+}
+
   hitDailyStepGoal(userId, date) {
     let findUser = this.findUser(userId)
     let user = userData.find(user => {
@@ -147,6 +186,33 @@ class Activity {
     let avgMins = allMinsSum/allMins.length
     return Math.round(avgMins * 100)/100
   }
+
+  findLatestDaySteps(userId){
+    const findUser = this.findUser(userId)
+    const userData = findUser.map(data => data.numSteps)
+    console.log(userData[userData.length-1])
+    return userData[userData.length-1]
+
+  }
+
+  findLatestDayActiveMins(userId){
+    const findUser = this.findUser(userId)
+    const userData = findUser.map(data => data.minutesActive)
+    console.log(userData[userData.length-1])
+    return userData[userData.length-1]
+
+  }
+
+  findLatestDay(userId){
+    const findUser = this.findUser(userId)
+    const userData = findUser.map(data => data.date)
+    console.log(userData[userData.length-1])
+    return userData[userData.length-1]
+
+  }
+
 }
+
+
 
 export default Activity;
