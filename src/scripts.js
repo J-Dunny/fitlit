@@ -24,6 +24,8 @@ const sleepDates = document.getElementById("sleepDates")
 const stepsLatestDay = document.getElementById("stepsLatestDay")
 const numMinutesActive = document.getElementById("numMinutesActive")
 const milesWalkedLatestDay = document.getElementById("milesWalkedLatestDay")
+const avgActivityAllUsers = document.getElementById("avgActivityAllUsers")
+const stepsLatestWeek = document.getElementById("stepsLatestWeek")
 
 
 let userRepo;
@@ -48,6 +50,7 @@ window.onload = (event) => {
   ///
   displayActiveMinLatestDay(1)
   milesLatestDay(1)
+  showAllUsersActivity(1)
 
 }).catch(err => console.log(err));
 }
@@ -90,17 +93,16 @@ function displaySleepInfo(userId) {
   
   const latestDay = sleepRepo.sleepData.length - 1;
   const findUser = sleepRepo.sleepData.filter((id) => id.userID === userId);
-  console.log("1")
+  
   const userLatestDay = findUser.length - 1;
   const userStartDay = userLatestDay - 6;
 
-  console.log("latestday", latestDay )
-  console.log("2")
-  console.log(findUser[userLatestDay].date)
+  
+  
   
   const hrsSleptLatestDay = sleepRepo.hoursSleptPerDay(userId, findUser[userLatestDay].date);
   
-  console.log("3")
+  
   const qualityLatestDay = sleepRepo.sleepQualityPerDay(
     userId,
     sleepRepo.sleepData[latestDay].date
@@ -139,16 +141,47 @@ function displaySleepInfo(userId) {
 }
 
 function displayStepsLatestDay(userId){
-  stepsLatestDay.innerText = `Steps today: ${activityRepo.findLatestDaySteps(userId)}`
+  stepsLatestDay.innerHTML = `<p>Steps today: <b class="data-color">${activityRepo.findLatestDaySteps(userId)}</b></p>`
 }
 
 function displayActiveMinLatestDay(userId){
-  numMinutesActive.innerText = `Active min today: ${activityRepo.findLatestDayActiveMins(userId)} `
+  numMinutesActive.innerHTML = `<p>Active min today: <b class="data-color">${activityRepo.findLatestDayActiveMins(userId)}</b></p> `
   
 }
 
 function milesLatestDay(userId){
-  milesWalkedLatestDay.innerText = `Miles walked today: ${activityRepo.milesPerDay(userId, activityRepo.findLatestDay(userId))}`
+  milesWalkedLatestDay.innerHTML = `<p>Miles walked today: <b class="data-color">${activityRepo.milesPerDay(userId, activityRepo.findLatestDay(userId))}</b></p>`
+}
+
+function showAllUsersActivity(userId){
+  avgActivityAllUsers.innerHTML = `<p>Steps:<b class="data-color">${activityRepo.allUserAvgSteps(activityRepo.findLatestDay(userId))}</b> Active Mins:<b class="data-color">${activityRepo.allUserAvgminutes(activityRepo.findLatestDay(userId))}</b> Flights:<b class="data-color">${activityRepo.allUserAvgStairs(activityRepo.findLatestDay(userId))}</b></p>`
 }
 
 
+function showActivityForWeek(userId){
+
+  const latestDay = activityRepo.activityData.length - 1;
+  const findUser = sleepRepo.sleepData.filter((id) => id.userID === userId);
+  
+  const userLatestDay = findUser.length - 1;
+  const userStartDay = userLatestDay - 6;
+  let stepsDaysWeek = activityRepo.activityStepsForWeek(userId, findUser[userStartDay].date )
+
+  stepsLatestWeek.innerHTML += `<p`
+}
+
+
+
+
+// const latestDay = sleepRepo.sleepData.length - 1;
+//   const findUser = sleepRepo.sleepData.filter((id) => id.userID === userId);
+  
+//   const userLatestDay = findUser.length - 1;
+//   const userStartDay = userLatestDay - 6;
+
+// let sleepDaysWeek = sleepRepo.datesWeek(userId, findUser[userStartDay].date)
+  
+
+// sleepDaysWeek.forEach((day) => {
+//   sleepDates.innerHTML += `<p class="pDate week-font data-color"><b>${day}</b></p>`
+// })
