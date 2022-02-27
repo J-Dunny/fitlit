@@ -164,6 +164,14 @@ class Activity {
 
   }
 
+  findLatestDay(userId){
+    const findUser = this.findUser(userId)
+    const userData = findUser.map(data => data.date)
+    console.log(userData[userData.length-1])
+    return userData[userData.length-1]
+
+  }
+
 }
 
 

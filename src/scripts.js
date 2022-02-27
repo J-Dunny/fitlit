@@ -23,6 +23,7 @@ const week = document.getElementById("week");
 const sleepDates = document.getElementById("sleepDates")
 const stepsLatestDay = document.getElementById("stepsLatestDay")
 const numMinutesActive = document.getElementById("numMinutesActive")
+const milesWalkedLatestDay = document.getElementById("milesWalkedLatestDay")
 
 
 let userRepo;
@@ -46,6 +47,7 @@ window.onload = (event) => {
   displayStepsLatestDay(1)
   ///
   displayActiveMinLatestDay(1)
+  milesLatestDay(1)
 
 }).catch(err => console.log(err));
 }
@@ -143,6 +145,10 @@ function displayStepsLatestDay(userId){
 function displayActiveMinLatestDay(userId){
   numMinutesActive.innerText = `Active min today: ${activityRepo.findLatestDayActiveMins(userId)} `
   
+}
+
+function milesLatestDay(userId){
+  milesWalkedLatestDay.innerText = `Miles walked today: ${activityRepo.milesPerDay(userId, activityRepo.findLatestDay(userId))}`
 }
 
 
