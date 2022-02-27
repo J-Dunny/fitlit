@@ -57,7 +57,7 @@ describe("Activity Repository", () => {
     expect(activity.allUserAvgminutes("2019/06/15")).to.equal(144.2)
   })
 
-  it.only("should have a method that number of steps for latest day", function () {
+  it("should have a method that number of steps for latest day", function () {
     expect(activity.findLatestDaySteps(1)).to.equal(10289)
   })
 })

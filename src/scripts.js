@@ -1,9 +1,10 @@
 import "./css/styles.css";
 import "./images/turing-logo.png";
-import { users, hydration, sleep } from "./apiCalls";
+import { users, hydration, sleep, activity } from "./apiCalls";
 import UserRepository from "./UserRepository";
 import HydrationRepository from "./HydrationRepository";
 import SleepRepository from "./SleepRepository";
+import Activity from "./Activity";
 
 const userName = document.getElementById("userName");
 const stepGoal = document.getElementById("stepGoal");
@@ -21,22 +22,32 @@ const errorMsg = document.querySelector('.title');
 const week = document.getElementById("week");
 const sleepDates = document.getElementById("sleepDates")
 const stepsLatestDay = document.getElementById("stepsLatestDay")
+const numMinutesActive = document.getElementById("numMinutesActive")
+
 
 let userRepo;
 let hydroRepo;
 let sleepRepo;
+let activityRepo;
 
 window.onload = (event) => {
-  Promise.all([users, hydration, sleep]).then((data) => {
+  Promise.all([users, hydration, sleep, activity]).then((data) => {
   userRepo = new UserRepository();
   userRepo.loadUserInfo(data[0].userData)
+  
   displayUserStepGoals(1);
   displayUserInfo(1);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
   displayHydrationInfo(1);
   sleepRepo = new SleepRepository(data[2].sleepData);
+
   displaySleepInfo(1);
-}).catch(err => errorMsg.innerText = "Data Not Found");
+  activityRepo = new Activity(data[3].activityData)
+  displayStepsLatestDay(1)
+  ///
+  displayActiveMinLatestDay(1)
+
+}).catch(err => console.log(err));
 }
 
 function displayUserInfo(userId) {
@@ -74,18 +85,25 @@ function displayUserStepGoals(userId) {
 }
 
 function displaySleepInfo(userId) {
+  
   const latestDay = sleepRepo.sleepData.length - 1;
   const findUser = sleepRepo.sleepData.filter((id) => id.userID === userId);
+  console.log("1")
   const userLatestDay = findUser.length - 1;
   const userStartDay = userLatestDay - 6;
-  const hrsSleptLatestDay = sleepRepo.hoursSleptPerDay(
-    userId,
-    sleepRepo.sleepData[latestDay].date
-  );
+
+  console.log("latestday", latestDay )
+  console.log("2")
+  console.log(findUser[userLatestDay].date)
+  
+  const hrsSleptLatestDay = sleepRepo.hoursSleptPerDay(userId, findUser[userLatestDay].date);
+  
+  console.log("3")
   const qualityLatestDay = sleepRepo.sleepQualityPerDay(
     userId,
     sleepRepo.sleepData[latestDay].date
   );
+  
   const hrsSleptLatestWeek = sleepRepo.timeForWeek(
     userId,
     sleepRepo.sleepData[userStartDay].date
@@ -96,7 +114,10 @@ function displaySleepInfo(userId) {
   );
   const allSleepQualityAvg = sleepRepo.avgQualityAll();
   const allTimeSleptAvg = sleepRepo.avgHoursAll();
+
+  
   let sleepDaysWeek = sleepRepo.datesWeek(userId, findUser[userStartDay].date)
+  
 
   sleepDaysWeek.forEach((day) => {
     sleepDates.innerHTML += `<p class="pDate week-font data-color"><b>${day}</b></p>`
@@ -115,6 +136,13 @@ function displaySleepInfo(userId) {
   allTimeAvgHrsSlept.innerHTML = `<p>Average Hours: <b class="data-color">${allTimeSleptAvg}</b></p>`;
 }
 
-function displayStepsLatestDay(){
+function displayStepsLatestDay(userId){
+  stepsLatestDay.innerText = `Steps today: ${activityRepo.findLatestDaySteps(userId)}`
+}
+
+function displayActiveMinLatestDay(userId){
+  numMinutesActive.innerText = `Active min today: ${activityRepo.findLatestDayActiveMins(userId)} `
   
 }
+
+
