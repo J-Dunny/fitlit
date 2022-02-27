@@ -57,7 +57,32 @@ describe("Activity Repository", () => {
     expect(activity.allUserAvgminutes("2019/06/15")).to.equal(144.2)
   })
 
-  it("should have a method that number of steps for latest day", function () {
+  it("should have a method that lists number of steps for latest day", function () {
     expect(activity.findLatestDaySteps(1)).to.equal(10289)
   })
+
+  it("should have a method that lists number of flights for a week", function () {
+    expect(activity.activityFlightsWeek(1)).to.deep.equal([
+      36, 18, 33, 2,
+      12,  6,  6
+    ])
+  })
+
+  it("should have a method that lists number of steps for a week", function () {
+    expect(activity.activityStepsForWeek(1)).to.deep.equal([
+      6637, 14329,
+      4419,  8429,
+     14478,  6760,
+     10289
+   ])
+  })
+
+  it("should have a method that lists number of active mins for a week", function () {
+    expect(activity.activityMinsForWeek(1)).to.deep.equal([
+      175, 168, 165,
+      275, 140, 135,
+      119
+    ])
+  })
+
 })
