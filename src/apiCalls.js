@@ -29,4 +29,28 @@ const addSleep = (newSleep) => {
 })
 }
 
-export { users, hydration, sleep, activity, addSleep}
+const addHydration = (newHydration) => {
+  fetch('http://localhost:3001/api/v1/sleep', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newSleep)
+  })
+  .then(response => {
+    console.log(response)
+    if(!response.ok) {
+      throw new Error("Please make sure that all fields are filled out")
+    } else {
+      return response.json()
+    }
+  })
+  .catch((error) => {
+    console.log(error)
+  if(error.message === "Failed to fetch"){
+    return errorTag.innerText = "OOPS SORRY something went wrong"
+  } else {
+    return errorTag.innerText = error.message
+  }
+})
+}
+
+export { users, hydration, sleep, activity, addSleep, addHydration}

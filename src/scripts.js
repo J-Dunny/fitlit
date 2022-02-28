@@ -1,6 +1,6 @@
 import "./css/styles.css";
 import "./images/turing-logo.png";
-import { users, hydration, sleep, activity, addSleep} from "./apiCalls";
+import { users, hydration, sleep, activity, addSleep, addHydration} from "./apiCalls";
 import UserRepository from "./UserRepository";
 import HydrationRepository from "./HydrationRepository";
 import SleepRepository from "./SleepRepository";
