@@ -39,24 +39,37 @@ window.onload = (event) => {
   Promise.all([users, hydration, sleep, activity]).then((data) => {
   userRepo = new UserRepository();
   userRepo.loadUserInfo(data[0].userData)
-  
-  displayUserStepGoals(1);
-  displayUserInfo(1);
+  const user = 30
+  displayUserStepGoals(user);
+  displayUserInfo(user);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
-  displayHydrationInfo(1);
+  displayHydrationInfo(user);
   sleepRepo = new SleepRepository(data[2].sleepData);
 
-  displaySleepInfo(1);
+  displaySleepInfo(user);
   activityRepo = new Activity(data[3].activityData)
-  displayStepsLatestDay(1)
+  displayStepsLatestDay(user)
   ///
-  displayActiveMinLatestDay(1)
-  milesLatestDay(1)
-  showAllUsersActivity(1)
-  showActivityForWeek(1)
-
+  displayActiveMinLatestDay(user)
+  milesLatestDay(user)
+  showAllUsersActivity(user)
+  showActivityForWeek(user)
 }).catch(err => console.log(err));
 }
+//event listener POST
+  // sleepForm.addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.target);
+  //   const newSleep = {
+  //     //add these query selectors
+  //     "userID": user.id,
+  //     "date": sleepDateInput.value.replaceAll('-', '/'),
+  //     "hoursSlept": sleepHoursInput.value,
+  //     "sleepQuality": sleepQualInput.value
+  //   };
+  //   fetchAPI.postSleepData(newSleep);
+  //   e.target.reset();
+  // });
 
 function displayUserInfo(userId) {
   const user = userRepo.userInfo[userId - 1];
@@ -93,24 +106,24 @@ function displayUserStepGoals(userId) {
 }
 
 function displaySleepInfo(userId) {
-  
+
   const latestDay = sleepRepo.sleepData.length - 1;
   const findUser = sleepRepo.sleepData.filter((id) => id.userID === userId);
-  
+
   const userLatestDay = findUser.length - 1;
   const userStartDay = userLatestDay - 6;
 
-  
-  
-  
+
+
+
   const hrsSleptLatestDay = sleepRepo.hoursSleptPerDay(userId, findUser[userLatestDay].date);
-  
-  
+
+
   const qualityLatestDay = sleepRepo.sleepQualityPerDay(
     userId,
     sleepRepo.sleepData[latestDay].date
   );
-  
+
   const hrsSleptLatestWeek = sleepRepo.timeForWeek(
     userId,
     sleepRepo.sleepData[userStartDay].date
@@ -122,9 +135,9 @@ function displaySleepInfo(userId) {
   const allSleepQualityAvg = sleepRepo.avgQualityAll();
   const allTimeSleptAvg = sleepRepo.avgHoursAll();
 
-  
+
   let sleepDaysWeek = sleepRepo.datesWeek(userId, findUser[userStartDay].date)
-  
+
 
   sleepDaysWeek.forEach((day) => {
     sleepDates.innerHTML += `<p class="pDate week-font data-color"><b>${day}</b></p>`
@@ -149,7 +162,7 @@ function displayStepsLatestDay(userId){
 
 function displayActiveMinLatestDay(userId){
   numMinutesActive.innerHTML = `<p>Active min today: <b class="data-color">${activityRepo.findLatestDayActiveMins(userId)}</b></p> `
-  
+
 }
 
 function milesLatestDay(userId){
@@ -169,7 +182,7 @@ function showActivityForWeek(userId){
   })
 
   let minsWeek = activityRepo.activityMinsForWeek(userId);
-    
+
   minsWeek.forEach(day => {
     minsLatestWeek.innerHTML += `<p class="pTag data-color"><b>${day}</b></p>`
   })
@@ -179,10 +192,6 @@ function showActivityForWeek(userId){
   flightsWeek.forEach(day => {
     flightsLatestWeek.innerHTML += `<p class="pTag data-color"><b>${day}</b></p>`
   })
-
-
-
-
 }
 
 // let hydroWeek = hydroRepo.eachDayWeek0z(userId);
@@ -193,7 +202,3 @@ function showActivityForWeek(userId){
 //   })
 //   hydroWeek.forEach((day) => {
 //     ouncesPerDayWeek.innerHTML += `<p class="pTag"><b class="data-color">${day}oz</b></p>`;
-
-
-
-
