@@ -47,7 +47,7 @@ let userRepo;
 let hydroRepo;
 let sleepRepo;
 let activityRepo;
-const user = 30
+const user = 1
 
 window.onload = (event) => {
   Promise.all([users, hydration, sleep, activity]).then((data) => {
@@ -167,7 +167,7 @@ function displaySleepInfo(userId) {
 
   const qualityLatestDay = sleepRepo.sleepQualityPerDay(
     userId,
-    sleepRepo.sleepData[latestDay].date
+    sleepRepo.sleepData[userLatestDay].date
   );
 
   const hrsSleptLatestWeek = sleepRepo.timeForWeek(
