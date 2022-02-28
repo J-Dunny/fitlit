@@ -30,10 +30,10 @@ const addSleep = (newSleep) => {
 }
 
 const addHydration = (newHydration) => {
-  fetch('http://localhost:3001/api/v1/sleep', {
+  fetch('http://localhost:3001/api/v1/hydration', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(newSleep)
+    body: JSON.stringify(newHydration)
   })
   .then(response => {
     console.log(response)
