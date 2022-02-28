@@ -1,6 +1,6 @@
 import "./css/styles.css";
 import "./images/turing-logo.png";
-import { users, hydration, sleep, activity, addSleep, addHydration} from "./apiCalls";
+import { users, hydration, sleep, activity, addSleep, addHydration, addActivity} from "./apiCalls";
 import UserRepository from "./UserRepository";
 import HydrationRepository from "./HydrationRepository";
 import SleepRepository from "./SleepRepository";
@@ -37,7 +37,11 @@ const errorTag = document.getElementById("errorTag")
 const hydrationDateInput = document.getElementById("hydrationDateInput")
 const ouncesInput = document.getElementById("ouncesInput")
 const hydrationForm = document.getElementById("hydrationForm")
-
+const activityDateInput = document.getElementById("activityDateInput")
+const flightsInput = document.getElementById("flightsInput")
+const minutesActiveInput = document.getElementById("minutesActiveInput")
+const stepsInput = document.getElementById("stepsInput")
+const activityForm = document.getElementById("activityForm")
 
 let userRepo;
 let hydroRepo;
@@ -94,6 +98,22 @@ window.onload = (event) => {
     };
     console.log(newHydration)
     addHydration(newHydration);
+    e.target.reset();
+  });
+
+  activityForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newActivity = {
+      //add these query selectors
+      "userID": user,
+      "date": activityDateInput.value.replaceAll('-', '/'),
+      "numSteps": stepsInput.value,
+      "minutesActive": minutesActiveInput.value,
+      "flightsOfStairs": flightsInput.value,
+    };
+    console.log(newActivity)
+    addActivity(newActivity);
     e.target.reset();
   });
 

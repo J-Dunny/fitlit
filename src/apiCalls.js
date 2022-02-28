@@ -53,4 +53,28 @@ const addHydration = (newHydration) => {
 })
 }
 
-export { users, hydration, sleep, activity, addSleep, addHydration}
+const addActivity = (newActivity) => {
+  fetch('http://localhost:3001/api/v1/activity', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newActivity)
+  })
+  .then(response => {
+    console.log(response)
+    if(!response.ok) {
+      throw new Error("Please make sure that all fields are filled out")
+    } else {
+      return response.json()
+    }
+  })
+  .catch((error) => {
+    console.log(error)
+  if(error.message === "Failed to fetch"){
+    return errorTag.innerText = "OOPS SORRY something went wrong"
+  } else {
+    return errorTag.innerText = error.message
+  }
+})
+}
+
+export { users, hydration, sleep, activity, addSleep, addHydration, addActivity}
