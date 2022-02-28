@@ -1,6 +1,6 @@
 import "./css/styles.css";
 import "./images/turing-logo.png";
-import { users, hydration, sleep, activity } from "./apiCalls";
+import { users, hydration, sleep, activity, addSleep, addHydration} from "./apiCalls";
 import UserRepository from "./UserRepository";
 import HydrationRepository from "./HydrationRepository";
 import SleepRepository from "./SleepRepository";
@@ -28,18 +28,24 @@ const avgActivityAllUsers = document.getElementById("avgActivityAllUsers")
 const stepsLatestWeek = document.getElementById("stepsLatestWeek")
 const minsLatestWeek = document.getElementById("minsLatestWeek")
 const flightsLatestWeek = document.getElementById("flightsLatestWeek")
-
+const sleepForm = document.getElementById("sleepForm")
+// const sleepId = document.getElementById("sleepId")
+const sleepDateInput = document.getElementById("sleepDateInput")
+const sleepHoursInput = document.getElementById("sleepHoursInput")
+const sleepQualityInput = document.getElementById("sleepQualityInput")
+const errorTag = document.getElementById("errorTag")
 
 let userRepo;
 let hydroRepo;
 let sleepRepo;
 let activityRepo;
+const user = 30
 
 window.onload = (event) => {
   Promise.all([users, hydration, sleep, activity]).then((data) => {
   userRepo = new UserRepository();
   userRepo.loadUserInfo(data[0].userData)
-  const user = 30
+
   displayUserStepGoals(user);
   displayUserInfo(user);
   hydroRepo = new HydrationRepository(data[1].hydrationData);
@@ -56,20 +62,22 @@ window.onload = (event) => {
   showActivityForWeek(user)
 }).catch(err => console.log(err));
 }
+
 //event listener POST
-  // sleepForm.addEventListener('submit', (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.target);
-  //   const newSleep = {
-  //     //add these query selectors
-  //     "userID": user.id,
-  //     "date": sleepDateInput.value.replaceAll('-', '/'),
-  //     "hoursSlept": sleepHoursInput.value,
-  //     "sleepQuality": sleepQualInput.value
-  //   };
-  //   fetchAPI.postSleepData(newSleep);
-  //   e.target.reset();
-  // });
+  sleepForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newSleep = {
+      //add these query selectors
+      "userID": user,
+      "date": sleepDateInput.value.replaceAll('-', '/'),
+      "hoursSlept": sleepHoursInput.value,
+      "sleepQuality": sleepQualityInput.value
+    };
+    console.log(newSleep)
+    addSleep(newSleep);
+    e.target.reset();
+  });
 
 function displayUserInfo(userId) {
   const user = userRepo.userInfo[userId - 1];
