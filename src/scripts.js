@@ -34,6 +34,10 @@ const sleepDateInput = document.getElementById("sleepDateInput")
 const sleepHoursInput = document.getElementById("sleepHoursInput")
 const sleepQualityInput = document.getElementById("sleepQualityInput")
 const errorTag = document.getElementById("errorTag")
+const hydrationDateInput = document.getElementById("hydrationDateInput")
+const ouncesInput = document.getElementById("ouncesInput")
+const hydrationForm = document.getElementById("hydrationForm")
+
 
 let userRepo;
 let hydroRepo;
@@ -76,6 +80,20 @@ window.onload = (event) => {
     };
     console.log(newSleep)
     addSleep(newSleep);
+    e.target.reset();
+  });
+
+  hydrationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newHydration = {
+      //add these query selectors
+      "userID": user,
+      "date": hydrationDateInput.value.replaceAll('-', '/'),
+      "numOunces": ouncesInput.value,
+    };
+    console.log(newHydration)
+    addHydration(newHydration);
     e.target.reset();
   });
 
