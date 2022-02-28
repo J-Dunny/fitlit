@@ -122,3 +122,8 @@ hr {
 .user-name {
   margin-top: 0;
 }
+
+.input-section {
+  display: flex;
+  flex-direction: row;
+}
