@@ -22,24 +22,22 @@ class SleepRepository {
   }
 
   sleepQualityPerDay(userId, date) {
-    const findUser = this.findUser(userId)
-    console.log("find", findUser)
+      const findUser = this.findUser(userId)
+      console.log("Date parameter", date)
+      let sleep = findUser.find(day => {
+        if(day.date === date) {
+          console.log(day.date)
+          return day
+        }
+      })
 
-    console.log("sleepQual", findUser.find(day => {
-      day.date === date
-      return day
-    }).sleepQuality)
-    let sleep = findUser.find(day => {
-      day.date === date
-      return day
-    }).sleepQuality;
-    
-    
+      // console.log("sleep", sleep)
+      const sleepQual = sleep.sleepQuality;
 
-    console.log("sleep", sleep)
 
-    return Math.round(sleep * 10) / 10;
-  }
+
+      return Math.round(sleepQual * 10) / 10;
+    }
 
   hoursSleptPerDay(userId, date) {
     const findUser = this.findUser(userId)
@@ -48,7 +46,7 @@ class SleepRepository {
     console.log("2",findUser.find((day) => day.date === date))
 
     let sleep = findUser.find((day) => day.date === date).hoursSlept;
-    
+
 
     return Math.round(sleep * 10) / 10;
   }
