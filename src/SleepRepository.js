@@ -4,50 +4,35 @@ class SleepRepository {
   }
 
   findUser(userId) {
-    if (!this.sleepData.map(data => data.userID).includes(userId)) {
-      return "User does not exist"
+    if (!this.sleepData.map((data) => data.userID).includes(userId)) {
+      return "User does not exist";
     }
-  return this.sleepData.filter((id) => id.userID === userId)
+    return this.sleepData.filter((id) => id.userID === userId);
   }
 
   avgPerDay(userId) {
-  const findUser = this.findUser(userId)
+    const findUser = this.findUser(userId);
     const totalSleep = findUser
       .map((sleep) => sleep.hoursSlept)
       .reduce((previousValue, currentValue) => previousValue + currentValue);
-
     let avgSleep = totalSleep / findUser.length;
-
     return Math.round(avgSleep * 10) / 10;
   }
 
   sleepQualityPerDay(userId, date) {
-      const findUser = this.findUser(userId)
-      console.log("Date parameter", date)
-      let sleep = findUser.find(day => {
-        if(day.date === date) {
-          console.log(day.date)
-          return day
-        }
-      })
-
-      // console.log("sleep", sleep)
-      const sleepQual = sleep.sleepQuality;
-
-
-
-      return Math.round(sleepQual * 10) / 10;
-    }
+    const findUser = this.findUser(userId);
+    let sleep = findUser.find((day) => {
+      if (day.date === date) {
+        return day;
+      }
+    });
+    const sleepQual = sleep.sleepQuality;
+    return Math.round(sleepQual * 10) / 10;
+  }
 
   hoursSleptPerDay(userId, date) {
-    const findUser = this.findUser(userId)
-
-    // console.log(findUser)
-    // console.log("2",findUser.find((day) => day.date === date))
-
+    const findUser = this.findUser(userId);
     let sleep = findUser.find((day) => day.date === date).hoursSlept;
-
-
     return Math.round(sleep * 10) / 10;
   }
 
@@ -55,21 +40,18 @@ class SleepRepository {
     const userSleepData = this.findUser(userId);
     const index = userSleepData.findIndex((data) => data.date === startDate);
     let i = index;
-
     const weekData = userSleepData
       .slice(i, i + 7)
       .map((data) => data.hoursSlept);
-
     return weekData;
   }
 
   qualityForWeek(userId, startDate) {
-    const userSleepData = this.findUser(userId)
+    const userSleepData = this.findUser(userId);
     const index = userSleepData.findIndex((data) => data.date === startDate);
     const weekData = userSleepData
       .slice(index, index + 7)
       .map((data) => data.sleepQuality);
-
     return weekData;
   }
 
@@ -78,7 +60,6 @@ class SleepRepository {
     let addSleep = sleep.reduce(
       (previousValue, currentValue) => previousValue + currentValue
     );
-
     return Math.round((addSleep / this.sleepData.length) * 10) / 10;
   }
 
@@ -87,7 +68,6 @@ class SleepRepository {
     let addSleep = sleep.reduce(
       (previousValue, currentValue) => previousValue + currentValue
     );
-
     return Math.round((addSleep / this.sleepData.length) * 10) / 10;
   }
 
@@ -97,7 +77,6 @@ class SleepRepository {
     const weekData = userSleepData
       .slice(index, index + 7)
       .map((data) => data.date);
-
     return weekData;
   }
 }
