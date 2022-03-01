@@ -42,8 +42,8 @@ class SleepRepository {
   hoursSleptPerDay(userId, date) {
     const findUser = this.findUser(userId)
 
-    console.log(findUser)
-    console.log("2",findUser.find((day) => day.date === date))
+    // console.log(findUser)
+    // console.log("2",findUser.find((day) => day.date === date))
 
     let sleep = findUser.find((day) => day.date === date).hoursSlept;
 
