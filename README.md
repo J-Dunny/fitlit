@@ -7,7 +7,7 @@
 
 ---
 
-The FitLit app is a fitness app that allows the user to view a personal fitness profile with data relating to sleep, hydration, and steps.  We built this app with TDD.   A dashboard for viewing user data was built with HTML and CSS. THe data displayed was from a fetch API and we built multiple classes to structure it for display.  Prototype methods were used to iterate through the fetched data in each class in order to display desired info for the user.  
+The FitLit app is a fitness app that allows the user to view a personal fitness profile with their data relating to sleep, hydration, and steps.  The user can add daily fitness information related to sleep, hydration and activivty that will update a local API.  We built this app with TDD.   A dashboard for viewing user data was built with HTML and CSS. THe data displayed was from a fetch API and we built multiple classes to structure it for display.  Prototype methods were used to iterate through the fetched data in each class in order to display desired info for the user.
 
 ### Built Using TDD
 
@@ -49,6 +49,13 @@ This project can be viewed [here](https://github.com/J-Dunny/fitlit)
 
   go to `http://localhost:8080/`
 
+Clone this repo `git@github.com:turingschool-examples/fitlit-api.git`, and cd into it. Then run:
+
+  `npm install`
+
+  Run `npm start` in your terminal to start the local server in your terminal.
+
+To stop the local server from running in your terminal use `command + c`
 
 ### Features
 
