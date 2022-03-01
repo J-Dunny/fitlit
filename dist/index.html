@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -87,4 +87,110 @@
     </section>
     <script src="bundle.js"></script>
   </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fitlit</title>
+  </head>
+  <body>
+    <h1 class="title">Fitlit Activity Dashboard</h1>
+    <section class="dasboard-container">
+      <div class="left-section">
+        <section class="boxes user-info">
+          <section class="box-titles" id="userName">Welcome "Name"</section>
+          <p class="email" id="email">"Email"</p>
+          <hr />
+          <h2 class="box-titles friends">Friends</h2>
+          <section class="friends-list" id="friendsList"></section>
+        </section>
+        <section class="boxes daily-step-goal">
+          <h1 class="box-titles">Activity</h1>
+          <p class="steps-latest-day" id="stepsLatestDay"></p>
+          <p id="numMinutesActive">Active Min</p>
+          <p id="milesWalkedLatestDay"> Miles Walked</p>
+          <p class="step-goal" id="stepGoal">Step Goal</p>
+          <p class="avg-step-goal" id="avgStepGoal">Average Step Goal</p>
+          <p>All Users Average:</p>
+          <p id="avgActivityAllUsers">Average activity for all users</p>
+        </section>
+      </div>
+      <div class="right-section">
+        <section class="boxes sleep">
+          <h1 class="box-titles">Sleep</h1>
+          <p id="sleepLatestDay">Latest Day</p>
+          <p>Latest Week</p>
+          <div class="week-data">
+            <section class="week" id="sleepDates"></section>
+            <section class="week" id="hoursLatestWeek"></section>
+            <section class="week" id="qualityLatestWeek"></section>
+          </div>
+          <p id="allTimeAvgSleepQuality">All-Time Average Sleep Quality</p>
+          <p id="allTimeAvgHrsSlept">All-Time Average Hours Slept</p>
+        </section>
+        <section class="boxes hydration">
+          <h1 class="box-titles">Activity Week</h1>
+          <p class="ounces-today" id="ouncesToday">Ounces Today</p>
+          <p>Ounces over the past week</p>
+          <div class="activities-week">
+          <section class="activities">
+            <p>Hydration:</p>
+            <p>Steps:</p>
+            <p>Actvive Min:</p>
+            <p>Stair Flights:</p>
+          </section>
+          <div class="week-data">
+            <section class="week" id="week"></section>
+            <section
+              class="week ounces-per-day-week"
+              id="ouncesPerDayWeek"
+            ></section>
+            <section class="week" id="stepsLatestWeek"></section>
+            <section class="week" id="minsLatestWeek"></section>
+            <section class="week" id="flightsLatestWeek"></section>
+          </div>
+        </div>
+        </section>
+      </div>
+    </section>
+    <section class="input-section">
+      <article class="sleep-input boxes">
+        <form class="" id ="sleepForm" action="index.html" method="post">
+          <h1 id="errorTag">Sleep Input</h1>
+          <section>
+          <input placeholder="Date: Year/Month/Day" type="text" name="date" value="" id="sleepDateInput" required>
+          <input placeholder="Sleep Quality" type="number" name="sleep_quality" value="" id="sleepHoursInput" required>
+          <input placeholder="Hours Slept" type="number" name="hours_slept" value="" id="sleepQualityInput" required>
+          <input type="submit" value="Submit">
+        </section>
+        </form>
+      </article>
+      <article class="hydration-input boxes">
+        <form class="" action="index.html" method="post" id="hydrationForm">
+          <h1>Hydration Input</h1>
+          <section>
+          <input placeholder="Date: Year/Month/Day" type="text" name="date" value="" id="hydrationDateInput" required>
+          <input placeholder="Ounces" type="number" name="number_ounces" value="" id="ouncesInput" required>
+          <input type="submit" value="Submit">
+        </section>
+        </form>
+      </article>
+      <article class="activity-input boxes">
+        <form class="" action="index.html" method="post" id="activityForm">
+          <h1>Activity Input</h1>
+          <section>
+          <input placeholder="Date: Year/Month/Day" type="text" name="date" value="" id="activityDateInput" required>
+          <input placeholder="Flights of Stairs" type="number" name="flights_stairs" value="" id="flightsInput" required>
+          <input placeholder="Minutes Active" type="number" name="minutes_active" value="" id="minutesActiveInput" required>
+          <input placeholder="Steps" type="text" name="number" value="" id="stepsInput" required>
+          <input type="submit" value="Submit">
+        </section>
+        </form>
+      </article>
+    </section>
+    <script src="bundle.js"></script>
+  </body>
 </html>
+
