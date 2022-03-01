@@ -155,28 +155,30 @@ function displaySleepInfo(userId) {
 
   const latestDay = sleepRepo.sleepData.length - 1;
   const findUser = sleepRepo.sleepData.filter((id) => id.userID === userId);
-
+  console.log("findUser", findUser)
   const userLatestDay = findUser.length - 1;
+  console.log("userLatestDay", userLatestDay)
   const userStartDay = userLatestDay - 6;
 
 
-
+  console.log("user last day", findUser[userLatestDay].date)
+  console.log("user start date", findUser[userStartDay].date)
 
   const hrsSleptLatestDay = sleepRepo.hoursSleptPerDay(userId, findUser[userLatestDay].date);
 
 
   const qualityLatestDay = sleepRepo.sleepQualityPerDay(
     userId,
-    sleepRepo.sleepData[userLatestDay].date
+    findUser[userLatestDay].date
   );
 
   const hrsSleptLatestWeek = sleepRepo.timeForWeek(
     userId,
-    sleepRepo.sleepData[userStartDay].date
+    findUser[userStartDay].date
   );
   const sleepQualityLatestWeek = sleepRepo.qualityForWeek(
     userId,
-    sleepRepo.sleepData[userStartDay].date
+    findUser[userStartDay].date
   );
   const allSleepQualityAvg = sleepRepo.avgQualityAll();
   const allTimeSleptAvg = sleepRepo.avgHoursAll();
