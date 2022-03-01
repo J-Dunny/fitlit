@@ -4,19 +4,17 @@ class HydrationRepository {
   }
 
   findUser(userId) {
-    if (!this.hydrationData.map(data => data.userID).includes(userId)) {
-      return "User does not exist"
+    if (!this.hydrationData.map((data) => data.userID).includes(userId)) {
+      return "User does not exist";
     }
-  return this.hydrationData.filter(id => id.userID === userId)
+    return this.hydrationData.filter((id) => id.userID === userId);
   }
 
   avgPerDayOz(userId) {
-    console.log(this.findUser(userId))
     const findUser = this.findUser(userId);
     const totalOz = findUser
       .map((userOz) => userOz.numOunces)
       .reduce((previousValue, currentValue) => previousValue + currentValue);
-
     return Math.round(totalOz / findUser.length);
   }
 
@@ -26,27 +24,24 @@ class HydrationRepository {
         return user.numOunces;
       }
     });
-
     return findDate.numOunces;
   }
 
   eachDayWeek0z(userId) {
-    const userHydroData = this.findUser(userId)
+    const userHydroData = this.findUser(userId);
     const lastElement = userHydroData.indexOf(
       userHydroData[userHydroData.length - 1]
     );
     const weekData = userHydroData.slice(lastElement - 6);
-
     return weekData.map((data) => data.numOunces);
   }
 
   datesWeek(userId) {
-    const userHydroData = this.findUser(userId)
+    const userHydroData = this.findUser(userId);
     const lastElement = userHydroData.indexOf(
       userHydroData[userHydroData.length - 1]
     );
     const weekData = userHydroData.slice(lastElement - 6);
-
     return weekData.map((data) => data.date);
   }
 }
