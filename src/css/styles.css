@@ -1,3 +1,4 @@
+
 body,
 html {
   color: #F5F5F5;
@@ -12,7 +13,7 @@ html {
 
 .title{
   margin-top: 30px;
-  font-size: 40px;
+  font-size: 2.5vw;
 }
 .dasboard-container {
   display: flex;
@@ -41,8 +42,8 @@ html {
 }
 
 .daily-step-goal {
-  width: 25vw;
-  height: 26vh;
+  width: 32vw;
+  height: 40vh;
 }
 
 .data-color {
@@ -56,13 +57,13 @@ p {
 }
 
 .user-info {
-  width: 25vw;
+  width: 32vw;
   height: 50vh;
 }
 
 .sleep {
-  width: 60vw;
-  height: 42vh;
+  width: 62vw;
+  height: 45vh;
 }
 
 hr {
@@ -70,14 +71,14 @@ hr {
 }
 
 .hydration {
-  width: 60vw;
-  height: 34vh;
+  width: 62vw;
+  height: 45vh;
 }
 
 .boxes {
   padding: 15px;
   margin: 5px;
-  font-size: 20px;
+  font-size: 1.3vw;
   background-color: #202020;
   border-radius: 7px;
   display: flex;
@@ -87,13 +88,13 @@ hr {
 }
 
 .week-font {
-  font-size: 15px;
+  font-size: 1vw;
 }
 
 .week {
   display: flex;
   flex-direction: row;
-  width: 60vw;
+  width: 50vw;
   justify-content: space-around;
 }
 
@@ -115,15 +116,35 @@ hr {
   display:flex;
   flex-direction: column;
   align-items: center;
-  font-size: 30px;
+  font-size: 2.2vw;
   margin-top: 1px;
 }
 
 .user-name {
   margin-top: 0;
+  font-size: 2vw;
 }
 
 .input-section {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
+
+.activities-week {
+  display:flex;
+  flex-direction: row;
+
+}
+
+.activities{
+  margin-top: 40px;
+}
+
+form{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+

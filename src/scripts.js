@@ -79,8 +79,8 @@ window.onload = (event) => {
       //add these query selectors
       "userID": user,
       "date": sleepDateInput.value.replaceAll('-', '/'),
-      "hoursSlept": sleepHoursInput.value,
-      "sleepQuality": sleepQualityInput.value
+      "hoursSlept": parseInt(sleepHoursInput.value),
+      "sleepQuality": parseInt(sleepQualityInput.value)
     };
     console.log(newSleep)
     addSleep(newSleep);
@@ -94,7 +94,7 @@ window.onload = (event) => {
       //add these query selectors
       "userID": user,
       "date": hydrationDateInput.value.replaceAll('-', '/'),
-      "numOunces": ouncesInput.value,
+      "numOunces": parseInt(ouncesInput.value),
     };
     console.log(newHydration)
     addHydration(newHydration);
@@ -108,9 +108,9 @@ window.onload = (event) => {
       //add these query selectors
       "userID": user,
       "date": activityDateInput.value.replaceAll('-', '/'),
-      "numSteps": stepsInput.value,
-      "minutesActive": minutesActiveInput.value,
-      "flightsOfStairs": flightsInput.value,
+      "numSteps": parseInt(stepsInput.value),
+      "minutesActive": parseInt(minutesActiveInput.value),
+      "flightsOfStairs": parseInt(flightsInput.value),
     };
     console.log(newActivity)
     addActivity(newActivity);
