@@ -73,4 +73,4 @@ To stop the local server from running in your terminal use `command + c`
 
 #### App screenshot
 ![image](/src/images/fitlit-dashboard.png)
-![image](/src/images/![image](/src/images/fitlit-dashboard.png))
+![image](/src/images/form-input-screenshot.png))
